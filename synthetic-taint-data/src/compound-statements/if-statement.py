@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+import json
+from os.path import abspath
+
+
 class character:
     name: str
     race: str
@@ -47,9 +51,13 @@ class character:
         else:
             print("The selected race: " + self.race + " is unknown.")
 
-   def read_character_file(self, path):
-       JSON.loads
+    def read_character_file(self, path):
+        char_dict = json.load(open(path))
+        self.name = char_dict.name
+        self.race = char_dict.race
+
 
 if __name__ == "__main__":
     char = character()
+    char.read_character_file(abspath("../../resources/character-sheet.json"))
     char.print_race()
