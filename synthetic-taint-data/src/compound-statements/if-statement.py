@@ -3,11 +3,12 @@ import json
 from os.path import abspath
 
 
-class character:
+class if_branch:
     name: str
     race: str
 
     def print_race(self):
+        print("The selected race is: " + self.race)
         if self.race == "breton":
             print(
                 "The Bretons are half-elves, with more human than elvish blood, and populate the province of High Rock. Bretons originated in the First Era. A series of raids on Nedic holdings by the Aldmer, resulted in the destruction of all human settlements in Skyrim. "
@@ -58,6 +59,6 @@ class character:
 
 
 if __name__ == "__main__":
-    char = character()
+    char = if_branch()
     char.read_character_file(abspath("synthetic-taint-data/resources/character-sheet.json"))
     char.print_race()
