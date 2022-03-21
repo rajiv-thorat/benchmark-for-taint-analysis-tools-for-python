@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 import os
 import json
+from os.path import abspath
 
 class for_loop:
    def find_character_sheet(self, path):
        character_sheet = None
        for file in os.listdir(path):
-           if os.path.isfile(os.path.join(path, file)) and file == "character-sheet.json":
-               character_sheet = json.loads(file)
+           complete_path = os.path.join(path, file)
+           if os.path.isfile(complete_path) and file == "character-sheet.json":
+               character_sheet = json.load(open(complete_path))
+               if character_sheet != "":
+                   print("The loop executed successfully.")
+                   return character_sheet
        if character_sheet is None:
             print("There was a problem reading the file.")
 
+def do_something_with_the_data(data):
+    print(data)
 
 if __name__ == "__main__":
     testing_for_loop = for_loop()
-    testing_for_loop.find_character_sheet
+    do_something_with_the_data(testing_for_loop.find_character_sheet(abspath("synthetic-taint-data/resources"))) 
