@@ -53,7 +53,9 @@ class if_branch:
             print("The selected race: " + self.race + " == unknown.")
 
     def read_character_file(self, path):
-        char_dict = json.load(open(path))
+        character_file = open(path)
+        char_dict = json.load(character_file)
+        character_file.close()
         self.name = char_dict['name']
         self.race = char_dict['race']
 

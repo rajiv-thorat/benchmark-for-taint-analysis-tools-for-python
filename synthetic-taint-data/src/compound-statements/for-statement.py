@@ -9,7 +9,9 @@ class for_loop:
        for file in os.listdir(path):
            complete_path = os.path.join(path, file)
            if os.path.isfile(complete_path) and file == "character-sheet.json":
-               character_sheet = json.load(open(complete_path))
+               character_file = open(complete_path)
+               character_sheet = json.load(character_file)
+               character_file.close()
                if character_sheet != "":
                    print("The loop executed successfully.")
                    return character_sheet
