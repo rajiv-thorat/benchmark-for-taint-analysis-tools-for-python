@@ -16,9 +16,10 @@ class for_loop:
        if character_sheet is None:
             print("There was a problem reading the file.")
 
-def do_something_with_the_data(data):
-    print(data)
+def print_character(self, character_sheet):
+        print(character_sheet["race"])
+        print(character_sheet["name"]) 
 
 if __name__ == "__main__":
     testing_for_loop = for_loop()
-    do_something_with_the_data(testing_for_loop.find_character_sheet(abspath("synthetic-taint-data/resources"))) 
+    testing_for_loop.find_character_sheet(testing_for_loop.find_character_sheet(abspath("synthetic-taint-data/resources"))) 

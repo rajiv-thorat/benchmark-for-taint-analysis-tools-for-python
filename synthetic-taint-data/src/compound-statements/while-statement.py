@@ -10,7 +10,7 @@ class while_loop:
         while not self.is_prime(random_number) and max_run_count != 0:
             print("the number is not prime. reading the character sheet.")
             character_sheet = json.load(open(abspath("synthetic-taint-data/resources/character-sheet.json")))
-            print(character_sheet["race"])
+            self.print_character(character_sheet)
             random_number = randint(0, 20)
             max_run_count = max_run_count - 1
         print("The randomly generated number was a prime number")
@@ -21,6 +21,9 @@ class while_loop:
             if random_number % i == 0:
                 return False
         return True
+    def print_character(self, character_sheet):
+        print(character_sheet["race"])
+        print(character_sheet["name"]) 
 
 if __name__ == "__main__":
     while_loop_ = while_loop()
