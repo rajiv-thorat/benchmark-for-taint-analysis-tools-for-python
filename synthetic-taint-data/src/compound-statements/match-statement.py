@@ -10,4 +10,9 @@ class match_class:
     def match_case(self):
         match (self.character_sheet["race"]):
             case ("altmer") if self.character_sheet["name"] != "rajiv":
-                print_character(self.character_sheet)
+                self.print_character(self.character_sheet)
+            case _:
+                print("there was a problem reading the character file.")
+    def print_character(self, character_sheet):
+        print(character_sheet["race"])
+        print(character_sheet["name"])
