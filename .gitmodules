@@ -1,0 +1,3 @@
+[submodule "real_world_DVSA"]
+	path = tests/real-world-projects/DVSA
+	url = git@github.com:OWASP/DVSA.git
