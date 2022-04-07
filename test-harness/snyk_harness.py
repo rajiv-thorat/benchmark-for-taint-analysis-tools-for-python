@@ -14,7 +14,6 @@ def run_benchmark_on_snyk(DIRECTORY_PATH_FOR_REALWORLD_PROJECTS, DIRECTORY_PATH_
         project_root = os.path.join(DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA, file)
         if(os.path.isdir(project_root) and file != ".DS_Store" and file!= "__pycache__"):
             run_snyk(project_root)
-            break
 
 def run_snyk(project_root):
     print(f"Running Snyk code in {project_root}")
@@ -22,8 +21,9 @@ def run_snyk(project_root):
     result_file_location = os.path.join(project_root, "snyk-result.json")
     # for some reason the --json-output-file does not generate the target file. 
     # Reading the stdout and cleaning it instead
-    command_output = subprocess.run(["snyk", "code", "test", "--json", project_root], capture_output=True)
-    print(command_output.args)
+    command = ["snyk", "code", "test", "--json", project_root]
+    print(command)
+    command_output = subprocess.run(command, capture_output=True)
     command_output.check_returncode()
     utils.write_to_file(os.path.join(project_root, "snyk-result.json"), utils.clean_stdout(str(command_output.stdout)))
     
