@@ -1,0 +1,337 @@
+{
+    "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+    "version": "2.1.0",
+    "runs": [
+      {
+        "tool": {
+          "driver": {
+            "name": "SnykCode",
+            "semanticVersion": "1.0.0",
+            "version": "1.0.0",
+            "rules": [
+              {
+                "id": "python/incomplete~url~sanitazation",
+                "name": "incomplete~url~sanitazation",
+                "shortDescription": {
+                  "text": "incomplete~url~sanitazation"
+                },
+                "defaultConfiguration": {
+                  "level": "warning"
+                },
+                "help": {
+                  "markdown": "",
+                  "text": ""
+                },
+                "properties": {
+                  "tags": [
+                    "python",
+                    "maintenance",
+                    "improvement",
+                    "v4",
+                    "github.com",
+                    "age"
+                  ],
+                  "categories": [
+                    "Security"
+                  ],
+                  "exampleCommitFixes": [
+                    {
+                      "commitURL": "https://github.com/fake-name/ReadableWebProxy/commit/7a24595ead16306c638e2f0763f9e977166fbb5c?diff=split#diff-7377f673ea73b36446671aba7b1e6291L143",
+                      "lines": [
+                        {
+                          "line": "  def wantsUrl(url):",
+                          "lineNumber": 217,
+                          "lineChange": "none"
+                        },
+                        {
+                          "line": "    netloc = urllib.parse.urlsplit(url).netloc",
+                          "lineNumber": 218,
+                          "lineChange": "none"
+                        },
+                        {
+                          "line": "    return netloc.lower().endswith(\"www.webnovel.com\")",
+                          "lineNumber": 142,
+                          "lineChange": "removed"
+                        },
+                        {
+                          "line": "    return netloc.lower().endswith(\".webnovel.com\")",
+                          "lineNumber": 219,
+                          "lineChange": "added"
+                        },
+                        {
+                          "line": "ast",
+                          "lineNumber": 220,
+                          "lineChange": "added"
+                        },
+                        {
+                          "line": "\\ No newline at end of file",
+                          "lineNumber": 221,
+                          "lineChange": "none"
+                        }
+                      ]
+                    },
+                    {
+                      "commitURL": "https://github.com/minio/minio-py/commit/d3f78bd2823694ec174bbd0c71bc9eac62700c2f?diff=split#diff-fcb41fe0cf76def6ffe532956529148bL140",
+                      "lines": [
+                        {
+                          "line": "    raise InvalidEndpointError('endpoint')",
+                          "lineNumber": 137,
+                          "lineChange": "removed"
+                        },
+                        {
+                          "line": "if hostname.endswith('amazonaws.com') and (hostname != 's3.amazonaws.com'):",
+                          "lineNumber": 139,
+                          "lineChange": "removed"
+                        },
+                        {
+                          "line": "    raise InvalidEndpointError('endpoint')",
+                          "lineNumber": 140,
+                          "lineChange": "removed"
+                        },
+                        {
+                          "line": "    raise InvalidEndpointError('Hostname does not meet URL standards.')",
+                          "lineNumber": 182,
+                          "lineChange": "added"
+                        },
+                        {
+                          "line": "if hostname.endswith('.amazonaws.com') and (hostname != 's3.amazonaws.com'):",
+                          "lineNumber": 184,
+                          "lineChange": "added"
+                        },
+                        {
+                          "line": "    raise InvalidEndpointError('Amazon S3 hostname should be s3.amazonaws.com.')",
+                          "lineNumber": 185,
+                          "lineChange": "added"
+                        }
+                      ]
+                    },
+                    {
+                      "commitURL": "https://github.com/tdryer/hangups/commit/4e597f4f182cf8e1d9426cc50084cbb767d0dedf?diff=split#diff-8f2b2a6645c82b7a69d429e453132015L79",
+                      "lines": [
+                        {
+                          "line": "    raise ValueError('The given URI \"%s\" is not valid' % url)",
+                          "lineNumber": 76,
+                          "lineChange": "removed"
+                        },
+                        {
+                          "line": "if hostname.endswith('google.com'):",
+                          "lineNumber": 78,
+                          "lineChange": "removed"
+                        },
+                        {
+                          "line": "    kwargs['headers'] = kwargs.get('headers') or {}",
+                          "lineNumber": 79,
+                          "lineChange": "removed"
+                        },
+                        {
+                          "line": "    kwargs['headers'].update(",
+                          "lineNumber": 80,
+                          "lineChange": "removed"
+                        },
+                        {
+                          "line": "# Ensure we don't accidentally send the authorization header to a",
+                          "lineNumber": 116,
+                          "lineChange": "added"
+                        },
+                        {
+                          "line": "# non-Google domain:",
+                          "lineNumber": 117,
+                          "lineChange": "added"
+                        },
+                        {
+                          "line": "assert urllib.parse.urlparse(url).hostname.endswith('.google.com')",
+                          "lineNumber": 118,
+                          "lineChange": "added"
+                        },
+                        {
+                          "line": "headers = headers or {}",
+                          "lineNumber": 119,
+                          "lineChange": "added"
+                        },
+                        {
+                          "line": "headers.update(self._authorization_headers)",
+                          "lineNumber": 120,
+                          "lineChange": "added"
+                        }
+                      ]
+                    }
+                  ],
+                  "exampleCommitDescriptions": [
+                    "Add more signature v4 documentation and cleanup.",
+                    "also deploy to 'master' if 'github.com' site",
+                    "$ ag --ignore=_vendor 'pypi.python.org' pip\n77:PyPI = Index(url='', trusted=True)"
+                  ],
+                  "precision": "very-high",
+                  "repoDatasetSize": 10
+                }
+              }
+            ]
+          }
+        },
+        "results": [
+          {
+            "ruleId": "python/incomplete~url~sanitazation",
+            "ruleIndex": 4,
+            "level": "warning",
+            "message": {
+              "text": "Security checks on the substrings of an unparsed URL are often vulnerable to bypassing.",
+              "markdown": "Security checks on the substrings of an unparsed URL are often vulnerable to bypassing.",
+              "arguments": []
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "real-world-projects/DVSA/backend/src/functions/user/user_inbox.py",
+                    "uriBaseId": "%SRCROOT%"
+                  },
+                  "region": {
+                    "startLine": 95,
+                    "endLine": 95,
+                    "startColumn": 57,
+                    "endColumn": 71
+                  }
+                }
+              }
+            ],
+            "fingerprints": {
+              "0": "5be7eb078f30d8b328bb1b306ef8dba89c71e996363ba4ae9029cc1c9f9fd6c2",
+              "1": "da9cf85a.b015a4eb.425259ff.90a3c50f.1d07cee4.a5d7f69f.2701234b.e9e55bec.da9cf85a.b015a4eb.425259ff.90a3c50f.1d07cee4.a5d7f69f.2701234b.e9e55bec"
+            },
+            "codeFlows": [
+              {
+                "threadFlows": [
+                  {
+                    "locations": [
+                      {
+                        "location": {
+                          "id": 0,
+                          "physicalLocation": {
+                            "artifactLocation": {
+                              "uri": "real-world-projects/DVSA/backend/src/functions/user/user_inbox.py",
+                              "uriBaseId": "%SRCROOT%"
+                            },
+                            "region": {
+                              "startLine": 95,
+                              "endLine": 95,
+                              "startColumn": 57,
+                              "endColumn": 71
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "properties": {
+              "priorityScore": 554,
+              "priorityScoreFactors": [
+                {
+                  "label": true,
+                  "type": "multipleOccurrence"
+                },
+                {
+                  "label": true,
+                  "type": "hotFileSource"
+                },
+                {
+                  "label": true,
+                  "type": "fixExamples"
+                }
+              ]
+            }
+          },
+          {
+            "ruleId": "python/incomplete~url~sanitazation",
+            "ruleIndex": 4,
+            "level": "warning",
+            "message": {
+              "text": "Security checks on the substrings of an unparsed URL are often vulnerable to bypassing.",
+              "markdown": "Security checks on the substrings of an unparsed URL are often vulnerable to bypassing.",
+              "arguments": []
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "real-world-projects/DVSA/backend/serverless/scripts/dvsa_init.py",
+                    "uriBaseId": "%SRCROOT%"
+                  },
+                  "region": {
+                    "startLine": 188,
+                    "endLine": 188,
+                    "startColumn": 12,
+                    "endColumn": 25
+                  }
+                }
+              }
+            ],
+            "fingerprints": {
+              "0": "24f1b886e4691be36b6c864b696219e219f7489db0345d4c825b99d37b509346",
+              "1": "da9cf85a.f78c0fe7.2683ade8.ca9857df.1d07cee4.ba14daf2.2701234b.2d5715ad.da9cf85a.f78c0fe7.2683ade8.139c59a8.1d07cee4.ba14daf2.2701234b.2d5715ad"
+            },
+            "codeFlows": [
+              {
+                "threadFlows": [
+                  {
+                    "locations": [
+                      {
+                        "location": {
+                          "id": 0,
+                          "physicalLocation": {
+                            "artifactLocation": {
+                              "uri": "real-world-projects/DVSA/backend/serverless/scripts/dvsa_init.py",
+                              "uriBaseId": "%SRCROOT%"
+                            },
+                            "region": {
+                              "startLine": 188,
+                              "endLine": 188,
+                              "startColumn": 12,
+                              "endColumn": 25
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "properties": {
+              "priorityScore": 504,
+              "priorityScoreFactors": [
+                {
+                  "label": true,
+                  "type": "multipleOccurrence"
+                },
+                {
+                  "label": true,
+                  "type": "hotFileCodeFlow"
+                },
+                {
+                  "label": true,
+                  "type": "fixExamples"
+                }
+              ]
+            }
+          }
+        ],
+        "properties": {
+          "coverage": [
+            {
+              "files": 49,
+              "isSupported": true,
+              "lang": "Python"
+            },
+            {
+              "files": 46,
+              "isSupported": true,
+              "lang": "JavaScript"
+            }
+          ]
+        }
+      }
+    ]
+  }
