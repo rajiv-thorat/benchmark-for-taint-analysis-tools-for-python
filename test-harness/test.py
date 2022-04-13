@@ -1,8 +1,17 @@
 from dataclasses import dataclass
 import json
+import logging
 import utils
+import re
 
-data = open("/Users/rajivthorat/Code/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic-taint-data/src/compound-statements/for-statement/snyk-result.json", "r")
-data_clean = utils.clean_stdout(data.read())
-json_data = json.loads(data_clean)
-utils.write_to_file("test.json", data)
+
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(levelname)s:%(message)s")
+data = open("/Users/rajivthorat/Code/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/snyk-result.json", "r")
+# data_clean = utils.clean_stdout(data.read())
+# test = re.search(r"\"", data.read())
+# for line in data.readlines():
+    # print(line)
+# logging.info(data_clean)
+json_data = json.loads(data.read())
+print(str(len(json_data)))
+# utils.write_to_file("/Users/rajivthorat/Code/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/test.json", data_clean)
