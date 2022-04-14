@@ -62,5 +62,5 @@ class if_branch:
 
 if __name__ == "__main__":
     char = if_branch()
-    char.read_character_file(abspath("synthetic-taint-data/resources/character-sheet.json"))
+    char.read_character_file(abspath("tests/synthetic-taint-data/resources/character-sheet.json"))
     char.print_race()

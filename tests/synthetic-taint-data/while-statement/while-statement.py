@@ -9,7 +9,7 @@ class while_loop:
         max_run_count = 10
         while not self.is_prime(random_number) and max_run_count != 0:
             print("the number is not prime. reading the character sheet.")
-            character_file = open(abspath("synthetic-taint-data/resources/character-sheet.json"))
+            character_file = open(abspath("tests/synthetic-taint-data/resources/character-sheet.json"))
             character_sheet = json.load(character_file)
             character_file.close()
             self.print_character(character_sheet)

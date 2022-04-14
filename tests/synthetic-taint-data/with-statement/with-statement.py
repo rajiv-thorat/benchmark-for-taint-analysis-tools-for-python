@@ -17,5 +17,5 @@ def print_character(character_sheet):
     print(character_sheet["name"])
 
 if __name__ == "__main__":
-    with with_statement("synthetic-taint-data/resources/character-sheet.json") as character_sheet:
+    with with_statement("tests/synthetic-taint-data/resources/character-sheet.json") as character_sheet:
         print_character(character_sheet)

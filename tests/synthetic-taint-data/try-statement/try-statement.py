@@ -8,17 +8,17 @@ class try_statement:
         try:
             character_printed = False
             missing_character_printed = False
-            character_file = open(abspath("synthetic-taint-data/resources/character-sheet.json"))
+            character_file = open(abspath("tests/synthetic-taint-data/resources/character-sheet.json"))
             character_sheet = json.load(character_file)
             self.print_character(character_sheet)
             character_printed = True
-            missing_character_file = open(abspath("synthetic-taint-data/resources/the-missing-character-sheet.json"))
+            missing_character_file = open(abspath("tests/synthetic-taint-data/resources/the-missing-character-sheet.json"))
             missing_character_sheet = json.load(missing_character_file)
             missing_character_file.close()
             self.print_character(missing_character_sheet)
             missing_character_printed = True
         except:
-            missing_character_file = open(abspath("synthetic-taint-data/resources/character-sheet.json"))
+            missing_character_file = open(abspath("tests/synthetic-taint-data/resources/character-sheet.json"))
             missing_character_sheet = json.load(missing_character_file)
             missing_character_file.close()
             self.print_character(missing_character_sheet)
