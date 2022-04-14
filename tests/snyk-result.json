@@ -64,7 +64,7 @@
                         "lineChange": "added"
                       },
                       {
-                        "line": "\\\\ No newline at end of file",
+                        "line": "\\ No newline at end of file",
                         "lineNumber": 221,
                         "lineChange": "none"
                       }
@@ -171,7 +171,7 @@
       "results": [
         {
           "ruleId": "python/incomplete~url~sanitazation",
-          "ruleIndex": 4,
+          "ruleIndex": 7,
           "level": "warning",
           "message": {
             "text": "Security checks on the substrings of an unparsed URL are often vulnerable to bypassing.",
@@ -245,7 +245,7 @@
         },
         {
           "ruleId": "python/incomplete~url~sanitazation",
-          "ruleIndex": 4,
+          "ruleIndex": 7,
           "level": "warning",
           "message": {
             "text": "Security checks on the substrings of an unparsed URL are often vulnerable to bypassing.",
