@@ -1,0 +1,11 @@
+NoSupportedSastFiles: We found 0 supported files 
+Please see our documentation for Snyk Code language and framework support
+https://docs.snyk.io/products/snyk-code/snyk-code-language-and-framework-support
+    at Object.test (/usr/local/lib/node_modules/snyk/dist/cli/webpack:/snyk/src/lib/plugins/sast/index.ts:44:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at Object.testEcosystem (/usr/local/lib/node_modules/snyk/dist/cli/webpack:/snyk/src/lib/ecosystems/test.ts:24:60)
+    at test (/usr/local/lib/node_modules/snyk/dist/cli/webpack:/snyk/src/cli/commands/test/index.ts:82:29)
+    at runCommand (/usr/local/lib/node_modules/snyk/dist/cli/webpack:/snyk/src/cli/main.ts:53:25)
+    at main (/usr/local/lib/node_modules/snyk/dist/cli/webpack:/snyk/src/cli/main.ts:317:11)
+    at /usr/local/lib/node_modules/snyk/dist/cli/webpack:/snyk/src/cli/index.ts:11:3
+    at Object.callHandlingUnexpectedErrors (/usr/local/lib/node_modules/snyk/dist/cli/webpack:/snyk/src/lib/unexpected-error.ts:28:5)
