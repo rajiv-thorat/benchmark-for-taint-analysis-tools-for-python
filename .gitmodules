@@ -1,3 +1,6 @@
 [submodule "DVSA"]
 	path = tests/real-world-projects/DVSA
 	url = git@github.com:rajiv-thorat/DVSA.git
+[submodule "DVFaaS"]
+	path = tests/real-world-projects/DVFaaS
+	url = git@github.com:rajiv-thorat/DVFaaS-Damn-Vulnerable-Functions-as-a-Service.git
