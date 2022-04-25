@@ -15,11 +15,11 @@ logging.debug(f"All the tests are at {utils.DIRECTORY_PATH_FOR_TESTS}")
 
 force_snyk_execution = False
 logging.info("Running Snyk Code on the benchmark.")
+logging.info(f"Force execution set to {force_snyk_execution}")
 snyk_harness.run_snyk_on_benchmark(utils.DIRECTORY_PATH_FOR_REALWORLD_PROJECTS, force_snyk_execution)
 logging.info("Finished running Snyk Code on the real world tests.")
 snyk_harness.run_snyk_on_benchmark(utils.DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA, force_snyk_execution)
 logging.info("Finished running Snyk Code on the synthetic tests.")
 
-# snyk_harness.read_results_and_compare(utils.DIRECTORY_PATH_FOR_REALWORLD_PROJECTS)
-# snyk_harness.read_results_and_compare(utils.DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA)
+snyk_harness.read_results_and_compare()
 logging.info("Finished reading snyk results ")

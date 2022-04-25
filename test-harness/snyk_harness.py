@@ -4,6 +4,8 @@ import os
 import subprocess
 from sys import stdout
 from unittest import result
+
+from pyparsing import restOfLine
 import utils
 import logging
 
@@ -37,22 +39,17 @@ def run_snyk(project_root, force_execution):
         logging.info(f"The Snyk result already exists for {project_root}. Skipped execution.")
     
 def read_results_and_compare():
-    for file in os.listdir(utils.DIRECTORY_PATH_FOR_REALWORLD_PROJECTS):
-        project_root = os.path.join(utils.DIRECTORY_PATH_FOR_REALWORLD_PROJECTS, file)
+    results = []
+    results.append(read_result(utils.DIRECTORY_PATH_FOR_REALWORLD_PROJECTS))
+    results.append(read_result(utils.DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA))
+
+def read_result(test_parent):
+    for file in os.listdir(test_parent):
+        project_root = os.path.join(test_parent, file)
         if(os.path.isdir(project_root) and file != ".DS_Store" and file!= "__pycache__" and file!="resources"):
             result = json.load(open(os.path.join(project_root, utils.SNYK_RESULT_FILE) , "r"))
             # taf = json.load(open(os.path.join(project_root, utils.TAF_FILE), "r"))
             # project_meta_data = json.load(open(os.path.join(project_root, utils.PROJECT_META_DATA), "r"))
             results = result["runs"][0]["results"]
             logging.debug(len(results))
-
-
-
-    for file in os.listdir(utils.DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA):
-       project_root = os.path.join(utils.DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA, file)
-       if(os.path.isdir(project_root) and file != ".DS_Store" and file!= "__pycache__" and file!="resources"):
-            result = json.load(open(os.path.join(project_root, utils.SNYK_RESULT_FILE) , "r"))
-            # taf = json.load(open(os.path.join(project_root, utils.TAF_FILE), "r"))
-            # project_meta_data = json.load(open(os.path.join(project_root, utils.PROJECT_META_DATA), "r"))
-            results = result["runs"][0]["results"]
-            logging.debug(len(results))
+    return results
