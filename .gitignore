@@ -134,3 +134,4 @@ dmypy.json
 # Snyk
 .dccache
 #*-result.json
+/output/
