@@ -39,9 +39,8 @@ def run_snyk(project_root, force_execution):
         logging.info(f"The Snyk result already exists for {project_root}. Skipped execution.")
     
 def read_results_and_compare():
-    results = []
-    results.append(read_result(utils.DIRECTORY_PATH_FOR_REALWORLD_PROJECTS))
-    results.append(read_result(utils.DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA))
+    read_result(utils.DIRECTORY_PATH_FOR_REALWORLD_PROJECTS)
+    read_result(utils.DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA)
 
 def read_result(test_parent):
     for file in os.listdir(test_parent):
