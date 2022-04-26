@@ -4,33 +4,23 @@
     "findings": [
         {
             "source": {
-                "statement": "",
-                "methodName": "",
-                "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "statement": "character_file = open(abspath(\"tests/synthetic-taint-data/resources/character-sheet.json\"))",
+                "methodName": "randomize_prime",
+                "className": "while_loop",
+                "lineNo": 12,
+                "targetName": "open",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "",
-                "methodName": "",
-                "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "statement": "self.print_character(character_sheet)",
+                "methodName": "randomize_prime",
+                "className": "while_loop",
+                "lineNo": 15,
+                "targetName": "print_character",
                 "targetNo": 1
             },
-            "intermediateFlows": [
-                {
-                    "statement": "",
-                    "methodName": "",
-                    "className": "",
-                    "lineNo": "",
-                    "ID": 0                    
-                }
-            ],
-            "attributes": [],
             "ID": 0,
-            "description": "",
+            "description": "Taint flows for the 'while' benchmark test.",
             "isNegative": false
         }
     ]
