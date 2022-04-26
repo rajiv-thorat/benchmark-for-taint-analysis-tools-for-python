@@ -20,7 +20,7 @@
                 "targetNo": 1
             },
             "ID": 0,
-            "description": "",
+            "description": "Taint flows for the 'match' benchmark test.",
             "isNegative": false
         }
     ]

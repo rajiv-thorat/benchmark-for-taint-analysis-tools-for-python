@@ -4,33 +4,65 @@
     "findings": [
         {
             "source": {
-                "statement": "",
-                "methodName": "",
-                "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "statement": "character_file = open(abspath(\"tests/synthetic-taint-data/resources/character-sheet.json\"))",
+                "methodName": "read_a_couple_of_character_sheets",
+                "className": "try_statement",
+                "lineNo": 11,
+                "targetName": "open",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "",
-                "methodName": "",
-                "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "statement": "self.print_character(character_sheet)",
+                "methodName": "read_a_couple_of_character_sheets",
+                "className": "try_statement",
+                "lineNo": 13,
+                "targetName": "print_character",
                 "targetNo": 1
             },
-            "intermediateFlows": [
-                {
-                    "statement": "",
-                    "methodName": "",
-                    "className": "",
-                    "lineNo": "",
-                    "ID": 0                    
-                }
-            ],
-            "attributes": [],
             "ID": 0,
-            "description": "",
+            "description": "Taint flow 1 for the 'try' benchmark test.",
+            "isNegative": false
+        },
+        {
+            "source": {
+                "statement": "missing_character_file = open(abspath(\"tests/synthetic-taint-data/resources/the-missing-character-sheet.json\"))",
+                "methodName": "read_a_couple_of_character_sheets",
+                "className": "try_statement",
+                "lineNo": 15,
+                "targetName": "open",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "self.print_character(missing_character_sheet)",
+                "methodName": "read_a_couple_of_character_sheets",
+                "className": "try_statement",
+                "lineNo": 18,
+                "targetName": "print_character",
+                "targetNo": 1
+            },
+            "ID": 1,
+            "description": "Taint flow 2 for the 'try' benchmark test.",
+            "isNegative": false
+        },
+        {
+            "source": {
+                "statement": "missing_character_file = open(abspath(\"tests/synthetic-taint-data/resources/character-sheet.json\"))",
+                "methodName": "read_a_couple_of_character_sheets",
+                "className": "try_statement",
+                "lineNo": 21,
+                "targetName": "open",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "self.print_character(missing_character_sheet)",
+                "methodName": "read_a_couple_of_character_sheets",
+                "className": "try_statement",
+                "lineNo": 24,
+                "targetName": "print_character",
+                "targetNo": 1
+            },
+            "ID": 2,
+            "description": "Taint flow 3 for the 'try' benchmark test.",
             "isNegative": false
         }
     ]
