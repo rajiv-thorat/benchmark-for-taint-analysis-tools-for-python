@@ -19,7 +19,7 @@
                 "targetName": "print_character",
                 "targetNo": 1
             },
-            "ID": 1,
+            "ID": 0,
             "description": "Taint flows for the 'function' benchmark test.",
             "isNegative": false
         }

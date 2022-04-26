@@ -4,33 +4,23 @@
     "findings": [
         {
             "source": {
-                "statement": "",
+                "statement": "char.read_character_file(abspath(\"tests/synthetic-taint-data/resources/character-sheet.json\"))",
                 "methodName": "",
                 "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "lineNo": 65,
+                "targetName": "read_character_file",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "",
+                "statement": "char.print_race()",
                 "methodName": "",
                 "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "lineNo": 66,
+                "targetName": "print_race",
                 "targetNo": 1
             },
-            "intermediateFlows": [
-                {
-                    "statement": "",
-                    "methodName": "",
-                    "className": "",
-                    "lineNo": "",
-                    "ID": 0                    
-                }
-            ],
-            "attributes": [],
             "ID": 0,
-            "description": "",
+            "description": "Taint flows for the 'if' benchmark test.",
             "isNegative": false
         }
     ]
