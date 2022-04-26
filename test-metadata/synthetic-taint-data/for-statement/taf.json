@@ -1,36 +1,26 @@
 {
-    "fileName": "DVSA",
+    "fileName": "for-statement.py",
     "date": "2022-04-26",
     "findings": [
         {
             "source": {
-                "statement": "",
+                "statement": "testing_for_loop.print_character(testing_for_loop.find_character_sheet(abspath('tests/synthetic-taint-data/resources'))) ",
                 "methodName": "",
                 "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "lineNo": 27,
+                "targetName": "find_character_sheet",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "",
+                "statement": "testing_for_loop.print_character(testing_for_loop.find_character_sheet(abspath('tests/synthetic-taint-data/resources'))) ",
                 "methodName": "",
                 "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "lineNo": 27,
+                "targetName": "print_character",
                 "targetNo": 1
             },
-            "intermediateFlows": [
-                {
-                    "statement": "",
-                    "methodName": "",
-                    "className": "",
-                    "lineNo": "",
-                    "ID": 0                    
-                }
-            ],
-            "attributes": [],
             "ID": 0,
-            "description": "",
+            "description": "Taint flows for the 'for' benchmark test.",
             "isNegative": false
         }
     ]
