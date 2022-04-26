@@ -4,31 +4,21 @@
     "findings": [
         {
             "source": {
-                "statement": "",
+                "statement": "character_sheet = match_case_.read_file(abspath(\"tests/synthetic-taint-data/resources/character-sheet.json\"))",
                 "methodName": "",
                 "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "lineNo": 23,
+                "targetName": "read_file",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "",
+                "statement": "match_case_.match_case(character_sheet)",
                 "methodName": "",
                 "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "lineNo": 24,
+                "targetName": "match_case",
                 "targetNo": 1
             },
-            "intermediateFlows": [
-                {
-                    "statement": "",
-                    "methodName": "",
-                    "className": "",
-                    "lineNo": "",
-                    "ID": 0                    
-                }
-            ],
-            "attributes": [],
             "ID": 0,
             "description": "",
             "isNegative": false
