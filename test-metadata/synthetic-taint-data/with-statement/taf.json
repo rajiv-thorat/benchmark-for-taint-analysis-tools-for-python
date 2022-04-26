@@ -1,0 +1,37 @@
+{
+    "fileName": "DVSA",
+    "date": "2022-04-26",
+    "findings": [
+        {
+            "source": {
+                "statement": "",
+                "methodName": "",
+                "className": "",
+                "lineNo": 0,
+                "targetName": "",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "",
+                "methodName": "",
+                "className": "",
+                "lineNo": 0,
+                "targetName": "",
+                "targetNo": 1
+            },
+            "intermediateFlows": [
+                {
+                    "statement": "",
+                    "methodName": "",
+                    "className": "",
+                    "lineNo": "",
+                    "ID": 0                    
+                }
+            ],
+            "attributes": [],
+            "ID": 0,
+            "description": "",
+            "isNegative": false
+        }
+    ]
+}
