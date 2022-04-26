@@ -4,33 +4,23 @@
     "findings": [
         {
             "source": {
-                "statement": "",
-                "methodName": "",
-                "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "statement": "self.file = open(abspath(self.file_path))",
+                "methodName": "__enter__",
+                "className": "with_statement",
+                "lineNo": 9,
+                "targetName": "open",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "",
+                "statement": "print_character(character_sheet)",
                 "methodName": "",
                 "className": "",
-                "lineNo": 0,
-                "targetName": "",
+                "lineNo": 21,
+                "targetName": "print_character",
                 "targetNo": 1
             },
-            "intermediateFlows": [
-                {
-                    "statement": "",
-                    "methodName": "",
-                    "className": "",
-                    "lineNo": "",
-                    "ID": 0                    
-                }
-            ],
-            "attributes": [],
             "ID": 0,
-            "description": "",
+            "description": "Taint flows for the 'with' benchmark test.",
             "isNegative": false
         }
     ]
