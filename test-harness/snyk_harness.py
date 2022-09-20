@@ -3,14 +3,26 @@ import json
 import os
 import subprocess
 from sys import stdout
-from unittest import result
 
-from pyparsing import restOfLine
 import utils
 import logging
+from os.path import abspath
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(levelname)s:%(message)s")
 logging.getLogger().setLevel(logging.DEBUG)
+
+class snyk_harness(Harness):
+    harness_name = 'snyk'
+
+    def run_tool(self):
+        # Running docker over the entire test suite to save on the number of executions
+        root_directory = abspath('..')
+        command = ['docker', 'run', '--rm', '-it', '-e', 'SNYK_TOKEN=d9d5e2f6-430d-454a-8dd4-0c0fe4420552', '-v',  + f'{root_directory}:/app', '-v', f'{root_directory}/output:/op', 'snyk/snyk:python-3.8', 'snyk code test --json > /op/op.json']
+        command_output = subprocess.run(command, stdout=PIPE, stderr=stdout, shell=False, universal_newlines=True)
+
+    def read_result(self):
+        output_directory = abspath('..') + '/output'
+        do_comparison
 
 def run_snyk_on_benchmark(test_parent, force_execution):
     for file in os.listdir(test_parent):
