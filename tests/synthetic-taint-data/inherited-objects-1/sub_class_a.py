@@ -1,7 +1,7 @@
-from super_class import super_class
+from super_class import SuperClass
 
 
-class sub_class_a(super_class):
+class SubClassA(SuperClass):
     def __init__(self):
         super().__init__()
 

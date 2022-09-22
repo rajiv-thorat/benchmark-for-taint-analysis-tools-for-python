@@ -1,7 +1,7 @@
 from importlib.resources import path
 
 
-class super_class:
+class SuperClass:
     def set_path(self):
         self.path = path
         
