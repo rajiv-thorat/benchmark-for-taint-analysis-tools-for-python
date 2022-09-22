@@ -7,6 +7,9 @@ class Harness:
     def run_tool_on_synthetic_tests(self):
         raise NotImplementedError('Please implement before use.')
 
+    def run_tool_on_real_world_tests(self):
+        raise NotImplementedError('Please implement before use.')
+
     def read_results(self):
         raise NotImplementedError('Please implement before use.')
     

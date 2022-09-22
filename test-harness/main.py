@@ -1,7 +1,8 @@
 from harness import Harness
-
-list_of_tools = ['snyk', 'pysa', 'codeql']
+from snyk_harness import SnykHarness
+from pysa_harness import PysaHarness
 
 if __name__== '__main__':
-    for tool in list_of_tools:
-        tool_harness = Harness(tool)
+    for tool in Harness.__subclasses__():
+        tool_instance = tool()
+        tool_instance.run_tool_on_synthetic_tests()
