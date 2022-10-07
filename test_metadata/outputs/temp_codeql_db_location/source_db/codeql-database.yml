@@ -1,0 +1,9 @@
+---
+sourceLocationPrefix: "/opt/src"
+baselineLinesOfCode: 58
+unicodeNewlines: false
+columnKind: "utf32"
+primaryLanguage: "python"
+creationMetadata:
+  cliVersion: "2.11.0"
+  creationTime: "2022-10-07T09:04:29.065108401Z"
