@@ -1,2 +1,0 @@
-Error: getaddrinfo EAI_AGAIN api.snyk.io
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)
