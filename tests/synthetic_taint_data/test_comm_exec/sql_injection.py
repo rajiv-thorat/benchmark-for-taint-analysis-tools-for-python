@@ -4,7 +4,7 @@ from django.db import connection
 import sys
 
 
-def show_user(username):
+def show_user(username) -> None:
     with connection.cursor() as cursor:
         # BAD -- Using string formatting
         subprocess.call(["application", username])
