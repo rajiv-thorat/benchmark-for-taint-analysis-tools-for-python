@@ -135,4 +135,4 @@ dmypy.json
 .dccache
 #*-result.json
 /output/
-/test_metadata/outputs/
+/test_metadata/outputs_raw/
