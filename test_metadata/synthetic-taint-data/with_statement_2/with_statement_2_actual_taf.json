@@ -1,5 +1,5 @@
 {
-    "fileName": "while_statement_1_false_positive.py",
+    "fileName": "with_statement_2_actual",
     "day": "2022-10-09",
     "findings": [
         {
@@ -7,21 +7,21 @@
                 "statement": "command = request.view_args.get('operator')",
                 "methodName": "",
                 "className": "",
-                "lineNo": 8,
+                "lineNo": 23,
                 "targetName": "view_args",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "eval(command)",
+                "statement": "eval(self.command)",
                 "methodName": "",
                 "className": "",
-                "lineNo": 11,
+                "lineNo": 19,
                 "targetName": "eval",
                 "targetNo": 1
             },
-            "ID": 5,
-            "description": "Taint flow for the 'while' statment false positive benchmark test. Command injection vulnerability.",
-            "isNegative": true,
+            "ID": 4,
+            "description": "Taint flow for the 'with' statment actual benchmark test. Command injection vulnerability.",
+            "isNegative": false,
             "intermediateFlows": [],
             "attributes": {}
         }

@@ -1,0 +1,8 @@
+{
+    "name": "with_statement_3",
+    "description": "This is the test case to check if the static analysis tools work with the 'with'.",
+    "n_files": 4,
+    "lines_of_code": 53,
+    "n_classes": 0,
+    "repo_url": ""
+}
