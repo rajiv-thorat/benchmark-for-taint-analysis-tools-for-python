@@ -1,0 +1,8 @@
+{
+    "name": "if_statement_1",
+    "description": "This is the test case to check if the static analysis tools work with branching.",
+    "n_files": 5,
+    "lines_of_code": 37,
+    "n_classes": 0,
+    "repo_url": ""
+}
