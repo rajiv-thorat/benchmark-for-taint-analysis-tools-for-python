@@ -1,0 +1,28 @@
+{
+    "fileName": "if_statement_1_actual",
+    "date": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('operator')",
+                "methodName": "",
+                "className": "",
+                "lineNo": 8,
+                "targetName": "view_args",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(command)",
+                "methodName": "",
+                "className": "",
+                "lineNo": 11,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 1,
+            "description": "Taint flow for the 'if' statment actual benchmark test. Command injection vulnerability.",
+            "isNegative": false,
+            "intermediateFlows": []
+        }
+    ]
+}
