@@ -1,6 +1,6 @@
 {
     "fileName": "if_statement_1_actual",
-    "date": "2022-10-09",
+    "day": "2022-10-09",
     "findings": [
         {
             "source": {
@@ -22,7 +22,8 @@
             "ID": 1,
             "description": "Taint flow for the 'if' statment actual benchmark test. Command injection vulnerability.",
             "isNegative": true,
-            "intermediateFlows": []
+            "intermediateFlows": [],
+            "attributes": {}
         }
     ]
 }

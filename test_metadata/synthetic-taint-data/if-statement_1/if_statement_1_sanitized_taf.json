@@ -1,6 +1,6 @@
 {
     "fileName": "if_statement_1_actual",
-    "date": "2022-10-09",
+    "day": "2022-10-09",
     "findings": [
         {
             "source": {
@@ -30,7 +30,8 @@
                     "lineNo": 13,
                     "ID": 1
                 }
-            ]
+            ],
+            "attributes": {}
         }
     ]
 }
