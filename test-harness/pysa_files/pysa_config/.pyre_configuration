@@ -1,0 +1,13 @@
+{
+  "source_directories": [
+    "/code"
+  ],
+  "taint_models_path": [
+    "."
+  ],
+  "search_path": [
+    "/usr/local/lib/pyre_check/stubs/",
+    {"site-package": "flask"},
+    {"site-package": "werkzeug"}
+  ]
+}

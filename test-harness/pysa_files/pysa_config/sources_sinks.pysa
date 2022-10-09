@@ -1,0 +1,16 @@
+django.http.request.HttpRequest.GET: TaintSource[CustomUserControlled] = ...
+
+def eval(__source: TaintSink[CodeExecution], __globals, __locals): ...
+
+werkzeug.wrappers.BaseRequest.args: TaintSource[CustomUserControlled] = ...
+
+def subprocess.check_call(
+  args: TaintSink[CodeExecution],
+  timeout,
+  stdin,
+  stdout,
+  stderr,
+  bufsize,
+  shell,
+  cwd,
+): ...

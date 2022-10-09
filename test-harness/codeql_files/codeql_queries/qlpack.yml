@@ -1,5 +1,0 @@
-name: "testpack"
-version: 0.0.0
-dependencies:
-  <codeql-libraries-and-queries-to-test>: "*"
-extractor: python
