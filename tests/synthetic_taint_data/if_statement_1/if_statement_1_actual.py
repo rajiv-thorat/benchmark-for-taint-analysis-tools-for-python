@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
-from subprocess import check_call
+from django.http import HttpRequest, HttpResponse
 
-from flask import Flask, request
-app = Flask(__name__)
-
-@app.route("/if_route")
-def if_route() -> None:
-    command = request.args.get('command', '')
+def if_route(request: HttpRequest) -> HttpResponse:
+    operator = request.GET["operator"]
     i = 10
     if i > 0:
         # This sink will always be reached
-        check_call([command])
+        result = eval(f"2 {operator} 2")
+        return result

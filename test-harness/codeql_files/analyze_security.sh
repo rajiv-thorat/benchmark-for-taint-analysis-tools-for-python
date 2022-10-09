@@ -58,7 +58,7 @@ else
 fi
 
 print_yellow "\nRunning the Quality and Security rules on the project"
-docker run --rm --name codeql-container -v ${inputfile}:/opt/src -v ${outputfile}:/opt/results -e CODEQL_CLI_ARGS=database\ analyze\ /opt/results/source_db\ --format=sarifv2\ --output=/opt/results/issues.sarif\ ${language}-security-and-quality.qls mcr.microsoft.com/cstsectools/codeql-container 
+docker run --rm --name codeql-container -v ${inputfile}:/opt/src -v ${outputfile}:/opt/results -e CODEQL_CLI_ARGS=database\ analyze\ /opt/results/source_db\ --format=csv\ --output=/opt/results/issues.csv\ ${language}-security-and-quality.qls mcr.microsoft.com/cstsectools/codeql-container 
 if [ $? -eq 0 ]
 then
     print_green "\nQuery execution successful" 
@@ -67,4 +67,4 @@ else
     exit 3
 fi
 
-[ $? -eq 0 ] && print_yellow "The results are saved at ${2}/issues.sarif"
+[ $? -eq 0 ] && print_yellow "The results are saved at ${2}/issues.csv"

@@ -1,0 +1,13 @@
+{
+  "site_package_search_strategy": "pep561",
+  "source_directories": [
+    "."
+  ],
+  "taint_models_path": "/usr/local/lib/pyre_check/taint",
+  "search_path": [
+        "/usr/local/lib/pyre_check/stubs",
+        {"site-package": "flask"},
+        {"site-package": "werkzeug"},
+        {"site-package": "jsonpickle"}
+    ]
+}
