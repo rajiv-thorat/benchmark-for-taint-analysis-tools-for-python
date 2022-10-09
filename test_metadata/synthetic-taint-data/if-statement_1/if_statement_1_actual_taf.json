@@ -1,5 +1,5 @@
 {
-    "fileName": "if_statement_1_actual",
+    "fileName": "if_statement_1_actual.py",
     "day": "2022-10-09",
     "findings": [
         {
@@ -15,7 +15,7 @@
                 "statement": "eval(command)",
                 "methodName": "",
                 "className": "",
-                "lineNo": 11,
+                "lineNo": 12,
                 "targetName": "eval",
                 "targetNo": 1
             },

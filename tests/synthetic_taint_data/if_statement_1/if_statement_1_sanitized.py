@@ -8,6 +8,7 @@ def if_route() -> None:
     command = request.view_args.get('operator')
     i = 10
     if i > 0:
+        # This is a candidate for a false positive.
         eval(sanitize(command))
 
 def sanitize(command: str) -> str:
