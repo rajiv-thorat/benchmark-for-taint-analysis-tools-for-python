@@ -1,13 +1,13 @@
 {
+  "site_package_search_strategy": "pep561",
   "source_directories": [
     "/code"
   ],
   "taint_models_path": [
-    "."
-  ],
+    "/usr/local/lib/pyre_check/"
+  ], 
   "search_path": [
-    "/usr/local/lib/pyre_check/stubs/",
-    {"site-package": "flask"},
-    {"site-package": "werkzeug"}
-  ]
+    "/usr/local/lib/pyre_check/stubs",
+    {"site-package": "flask"}
+  ] 
 }
