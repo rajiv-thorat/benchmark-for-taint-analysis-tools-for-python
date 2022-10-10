@@ -5,17 +5,17 @@
         {
             "source": {
                 "statement": "command = request.view_args.get('operator')",
-                "methodName": "",
+                "methodName": "while_route",
                 "className": "",
                 "lineNo": 22,
-                "targetName": "view_args",
+                "targetName": "get",
                 "targetNo": 1
             },
             "sink": {
                 "statement": "eval(self.command)",
-                "methodName": "",
+                "methodName": "__exit__",
                 "className": "",
-                "lineNo": 11,
+                "lineNo": 15,
                 "targetName": "eval",
                 "targetNo": 1
             },

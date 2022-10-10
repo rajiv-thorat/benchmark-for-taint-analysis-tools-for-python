@@ -5,15 +5,15 @@
         {
             "source": {
                 "statement": "command = request.view_args.get('operator')",
-                "methodName": "",
+                "methodName": "with_route",
                 "className": "",
                 "lineNo": 22,
-                "targetName": "view_args",
+                "targetName": "get",
                 "targetNo": 1
             },
             "sink": {
                 "statement": "eval(self.command)",
-                "methodName": "",
+                "methodName": "__exit__",
                 "className": "",
                 "lineNo": 15,
                 "targetName": "eval",

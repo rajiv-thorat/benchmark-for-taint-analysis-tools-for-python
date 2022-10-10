@@ -18,8 +18,8 @@ class WithStatement:
         # The sink is inside the called function
         eval(self.command)
 
-@app.route("/while_route")
-def while_route() -> None:
+@app.route("/with_route")
+def with_route() -> None:
     command = request.view_args.get('operator')
     with WithStatement(command) as instance:
         # The sink is inside a loop.

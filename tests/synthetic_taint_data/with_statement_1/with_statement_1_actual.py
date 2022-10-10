@@ -18,7 +18,7 @@ class WithStatement:
         print(self.command)
 
 @app.route("/while_route")
-def while_route() -> None:
+def with_route() -> None:
     command = request.view_args.get('operator')
     with WithStatement(command) as instance:
         instance.print_len()
