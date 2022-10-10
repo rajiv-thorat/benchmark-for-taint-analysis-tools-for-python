@@ -1,0 +1,37 @@
+{
+    "fileName": "function_call_1_sanitized.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('operator')",
+                "methodName": "function_call",
+                "className": "",
+                "lineNo": 8,
+                "targetName": "get",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(sanitize(command))",
+                "methodName": "functiona_call",
+                "className": "",
+                "lineNo": 12,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 3,
+            "description": "Taint flow for the chained function call sanitized benchmark test. Command injection vulnerability.",
+            "isNegative": true,
+            "intermediateFlows": [
+                {
+                    "statement": "eval(sanitize(command))",
+                    "methodName": "def sanitize(command: str) -> str",
+                    "className": "",
+                    "lineNo": 14,
+                    "ID": 1
+                }
+            ],
+            "attributes": {}
+        }
+    ]
+}

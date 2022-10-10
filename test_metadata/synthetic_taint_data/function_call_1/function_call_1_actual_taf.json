@@ -1,11 +1,11 @@
 {
-    "fileName": "function_call_1_actual.py",
+    "fileName": "if_statement_1_actual.py",
     "day": "2022-10-09",
     "findings": [
         {
             "source": {
                 "statement": "command = request.view_args.get('operator')",
-                "methodName": "function_call",
+                "methodName": "if_route",
                 "className": "",
                 "lineNo": 8,
                 "targetName": "get",
@@ -13,14 +13,14 @@
             },
             "sink": {
                 "statement": "eval(command)",
-                "methodName": "function_call",
+                "methodName": "if_route",
                 "className": "",
                 "lineNo": 12,
                 "targetName": "eval",
                 "targetNo": 1
             },
             "ID": 1,
-            "description": "Taint flow for the function call actual benchmark test. Command injection vulnerability.",
+            "description": "Taint flow for the 'if' statment actual benchmark test. Command injection vulnerability.",
             "isNegative": false,
             "intermediateFlows": [],
             "attributes": {}
