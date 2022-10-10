@@ -1,0 +1,29 @@
+{
+    "fileName": "field_sensitivity_1_actual.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('operator')",
+                "methodName": "field_sensitivity_route",
+                "className": "",
+                "lineNo": 15,
+                "targetName": "get",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(char.get_path())",
+                "methodName": "passTaint",
+                "className": "",
+                "lineNo": 11,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 4,
+            "description": "Taint flow for field sensitivity benchmark test. Command injection vulnerability.",
+            "isNegative": false,
+            "intermediateFlows": [],
+            "attributes": {}
+        }
+    ]
+}
