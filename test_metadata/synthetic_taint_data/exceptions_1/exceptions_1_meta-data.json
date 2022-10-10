@@ -1,0 +1,8 @@
+{
+    "name": "exceptions_1",
+    "description": "This is the test case to check if the static analysis tools work with exception handling.",
+    "n_files": 4,
+    "lines_of_code": 28,
+    "n_classes": 0,
+    "repo_url": ""
+}
