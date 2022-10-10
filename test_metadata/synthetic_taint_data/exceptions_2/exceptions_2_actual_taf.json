@@ -1,5 +1,5 @@
 {
-    "fileName": "exceptions_1_false_positive.py",
+    "fileName": "exceptions_2_actual.py",
     "day": "2022-10-09",
     "findings": [
         {
@@ -7,7 +7,7 @@
                 "statement": "command = request.view_args.get('operator')",
                 "methodName": "exeption_route",
                 "className": "",
-                "lineNo": 11,
+                "lineNo": 12,
                 "targetName": "get",
                 "targetNo": 1
             },
@@ -15,15 +15,16 @@
                 "statement": "eval(command)",
                 "methodName": "exeption_route",
                 "className": "",
-                "lineNo": 14,
+                "lineNo": 17,
                 "targetName": "eval",
                 "targetNo": 1
             },
-            "ID": 2,
+            "ID": 1,
             "description": "Taint flow for the exception handling benchmark test. Command injection vulnerability.",
-            "isNegative": true,
+            "isNegative": false,
             "intermediateFlows": [],
             "attributes": {}
         }
     ]
 }
+

@@ -5,7 +5,7 @@
         {
             "source": {
                 "statement": "command = request.view_args.get('operator')",
-                "methodName": "function_call",
+                "methodName": "exeption_route",
                 "className": "",
                 "lineNo": 10,
                 "targetName": "get",
@@ -13,7 +13,7 @@
             },
             "sink": {
                 "statement": "eval(command)",
-                "methodName": "function_call",
+                "methodName": "exeption_route",
                 "className": "",
                 "lineNo": 15,
                 "targetName": "eval",
