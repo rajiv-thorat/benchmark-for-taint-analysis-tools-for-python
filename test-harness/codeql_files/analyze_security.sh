@@ -39,7 +39,7 @@ else
 fi
 
 print_yellow "\nCreating the codeQL database. This might take some time depending on the size of the project..."
-docker run --rm --name codeql-container -v "${inputfile}:/opt/src" -v "${outputfile}:/opt/results" -e CODEQL_CLI_ARGS=database\ create\ --language=${3}\ /opt/results/source_db\ -s\ /opt/src mcr.microsoft.com/cstsectools/codeql-container
+docker run --rm --name codeql-container -v "${inputfile}:/opt/src" -v "${outputfile}:/opt/results" -e CODEQL_CLI_ARGS=database\ create\ --language=${3}\ /opt/results/source_db\ -s\ /opt/src local/codeql-container
 if [ $? -eq 0 ]
 then
     print_green "\nCreated the database" 
@@ -48,7 +48,7 @@ else
     exit 1
 fi
 
-docker run --rm --name codeql-container -v "${inputfile}:/opt/src" -v "${outputfile}:/opt/results" -e CODEQL_CLI_ARGS=database\ upgrade\ /opt/results/source_db mcr.microsoft.com/cstsectools/codeql-container 
+docker run --rm --name codeql-container -v "${inputfile}:/opt/src" -v "${outputfile}:/opt/results" -e CODEQL_CLI_ARGS=database\ upgrade\ /opt/results/source_db local/codeql-container 
 if [ $? -eq 0 ]
 then
     print_green "\nUpgraded the database\n" 
@@ -58,7 +58,7 @@ else
 fi
 
 print_yellow "\nRunning the Quality and Security rules on the project"
-docker run --rm --name codeql-container -v ${inputfile}:/opt/src -v ${outputfile}:/opt/results -e CODEQL_CLI_ARGS=database\ analyze\ /opt/results/source_db\ --format=csv\ --output=/opt/results/issues.csv\ ${language}-security-and-quality.qls mcr.microsoft.com/cstsectools/codeql-container 
+docker run --rm --name codeql-container -v ${inputfile}:/opt/src -v ${outputfile}:/opt/results -e CODEQL_CLI_ARGS=database\ analyze\ /opt/results/source_db\ --format=csv\ --output=/opt/results/issues.csv\ ${language}-security-and-quality.qls local/codeql-container 
 if [ $? -eq 0 ]
 then
     print_green "\nQuery execution successful" 
