@@ -1,0 +1,29 @@
+{
+    "fileName": "for_statement_1_false_positive.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('operator')",
+                "methodName": "for_route",
+                "className": "",
+                "lineNo": 9,
+                "targetName": "get",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(command)",
+                "methodName": "for_route",
+                "className": "",
+                "lineNo": 13,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 5,
+            "description": "Taint flow for the 'for' statment false positive benchmark test. Command injection vulnerability.",
+            "isNegative": true,
+            "intermediateFlows": [],
+            "attributes": {}
+        }
+    ]
+}
