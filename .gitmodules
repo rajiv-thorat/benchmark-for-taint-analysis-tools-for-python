@@ -4,6 +4,7 @@
 [submodule "DVFaaS"]
 	path = tests/real_world_projects/DVFaaS
 	url = git@github.com:rajiv-thorat/DVFaaS-Damn-Vulnerable-Functions-as-a-Service.git
+
 [submodule "codeql-container"]
 	path = test_harness/codeql_files/codeql-container
 	url = git@github.com:rajiv-thorat/codeql-container.git
