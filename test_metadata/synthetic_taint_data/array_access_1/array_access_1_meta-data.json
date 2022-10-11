@@ -1,0 +1,8 @@
+{
+    "name": "array_access_1",
+    "description": "This is the test case to check if the static analysis tools work with arrays.",
+    "n_files": 4,
+    "lines_of_code": 26,
+    "n_classes": 0,
+    "repo_url": ""
+}
