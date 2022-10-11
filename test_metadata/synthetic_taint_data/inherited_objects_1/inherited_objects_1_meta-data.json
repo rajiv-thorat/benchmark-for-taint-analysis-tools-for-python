@@ -1,0 +1,8 @@
+{
+    "name": "inherited_objects_1",
+    "description": "This is the test case to check if the static analysis tools work with inherited objects.",
+    "n_files": 7,
+    "lines_of_code": 73,
+    "n_classes": 3,
+    "repo_url": ""
+}

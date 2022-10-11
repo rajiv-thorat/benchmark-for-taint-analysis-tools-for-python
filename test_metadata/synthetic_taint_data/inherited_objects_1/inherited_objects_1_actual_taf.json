@@ -1,21 +1,21 @@
 {
-    "fileName": "if_statement_1_actual.py",
+    "fileName": "inherited_objects_1_actual.py",
     "day": "2022-10-09",
     "findings": [
         {
             "source": {
                 "statement": "command = request.view_args.get('operator')",
-                "methodName": "if_route",
+                "methodName": "inheritance_route",
                 "className": "",
-                "lineNo": 8,
+                "lineNo": 10,
                 "targetName": "get",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "eval(command)",
-                "methodName": "if_route",
+                "statement": "eval(instance.get_command())",
+                "methodName": "inheritance_route",
                 "className": "",
-                "lineNo": 12,
+                "lineNo": 19,
                 "targetName": "eval",
                 "targetNo": 1
             },
