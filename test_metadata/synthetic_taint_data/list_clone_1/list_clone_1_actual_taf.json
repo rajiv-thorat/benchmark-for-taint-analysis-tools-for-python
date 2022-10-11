@@ -1,0 +1,30 @@
+{
+    "fileName": "list_clone_1_actual.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('operator')",
+                "methodName": "list_copy_route",
+                "className": "",
+                "lineNo": 8,
+                "targetName": "get",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(linked_list_copy.popleft())",
+                "methodName": "list_copy_route",
+                "className": "",
+                "lineNo": 14,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 1,
+            "description": "Taint flow for the cloned list benchmark test. Command injection vulnerability.",
+            "isNegative": false,
+            "intermediateFlows": [],
+            "attributes": {}
+        }
+    ]
+}
+

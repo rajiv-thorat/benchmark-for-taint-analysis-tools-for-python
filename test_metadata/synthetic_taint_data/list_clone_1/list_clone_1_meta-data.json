@@ -1,0 +1,8 @@
+{
+    "name": "list_clone_1",
+    "description": "This is the test case to check if the static analysis tools work with cloned linked list from deque.",
+    "n_files": 3,
+    "lines_of_code": 14,
+    "n_classes": 0,
+    "repo_url": ""
+}
