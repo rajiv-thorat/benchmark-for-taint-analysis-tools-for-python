@@ -1,0 +1,29 @@
+{
+    "fileName": "multi_dementional_array_1_actual.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('operator')",
+                "methodName": "multi_array_route",
+                "className": "",
+                "lineNo": 8,
+                "targetName": "get",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(source_item)",
+                "methodName": "multi_array_route",
+                "className": "",
+                "lineNo": 12,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 1,
+            "description": "Taint flow for the multi dementional array benchmark test. Command injection vulnerability.",
+            "isNegative": false,
+            "intermediateFlows": [],
+            "attributes": {}
+        }
+    ]
+}
