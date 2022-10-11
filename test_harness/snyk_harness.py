@@ -15,7 +15,7 @@ class SnykHarness(Harness):
         # Running docker over the synthetic and real world tests in a single execution to keep the number of runs to a minimum.
         logging.info('Running Snyk code.')
         root_directory = abspath('..')
-        # docker run --rm -it -e "SNYK_TOKEN=d9d5e2f6-430d-454a-8dd4-0c0fe4420552" -v $(pwd):/app snyk/snyk:python-3.8 snyk code test --json > new.json
+        # docker run --rm -it -e "SNYK_TOKEN=d9d5e2f6-430d-454a-8dd4-0c0fe4420552" -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_taint_data/abstract_factory_1:/app -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_metadata/outputs_raw/snyk/abstract_factory_1:/op local/snyk-container
         command = ['docker', 'run', '--rm', '-it', '-e', 'SNYK_TOKEN=d9d5e2f6-430d-454a-8dd4-0c0fe4420552', '-v',  + f'{root_directory}:/app', '-v', f'{root_directory}/output:/op', 'snyk/snyk:python-3.8', 'snyk code test --json > /op/op.json']
         command_output = subprocess.run(command, stdout=PIPE, stderr=PIPE, shell=False, universal_newlines=True)
         logging.info(f'Finished executing {command_output.args}')
