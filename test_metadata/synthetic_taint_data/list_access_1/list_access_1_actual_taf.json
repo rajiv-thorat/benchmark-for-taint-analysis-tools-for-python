@@ -1,0 +1,29 @@
+{
+    "fileName": "list_access_1_actual.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('operator')",
+                "methodName": "list_route",
+                "className": "",
+                "lineNo": 8,
+                "targetName": "get",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(command)",
+                "methodName": "list_route",
+                "className": "",
+                "lineNo": 12,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 1,
+            "description": "Taint flow for the if statement actual benchmark test. Command injection vulnerability.",
+            "isNegative": false,
+            "intermediateFlows": [],
+            "attributes": {}
+        }
+    ]
+}
