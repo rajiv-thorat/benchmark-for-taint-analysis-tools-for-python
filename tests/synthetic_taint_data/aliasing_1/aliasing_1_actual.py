@@ -1,10 +1,13 @@
+#!/usr/bin/env python3
 from class_a import ClassA
 from class_b import ClassB
 import random
-import sys
-from helper import run_cmd
+from flask import Flask, request
 
-if __name__=='__main__':
+app = Flask(__name__)
+
+@app.route("/aliasing_route")
+def aliasing_route() -> None:
     a = ClassB()
     p = ClassB()
 
@@ -19,5 +22,5 @@ if __name__=='__main__':
         y = q
 
     x.a_instance = y
-    q.random_data = sys.argv[1]
-    run_cmd(a.a_instance.random_data)
+    q.random_data = request.view_args.get('operator')
+    eval(a.a_instance.random_data)

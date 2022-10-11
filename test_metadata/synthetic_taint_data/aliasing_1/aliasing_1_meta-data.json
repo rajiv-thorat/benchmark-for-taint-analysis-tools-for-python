@@ -1,0 +1,8 @@
+{
+    "name": "aliasing_1",
+    "description": "This is the test case to check if the static analysis tools work with aliasing.",
+    "n_files": 5,
+    "lines_of_code": 32,
+    "n_classes": 2,
+    "repo_url": ""
+}
