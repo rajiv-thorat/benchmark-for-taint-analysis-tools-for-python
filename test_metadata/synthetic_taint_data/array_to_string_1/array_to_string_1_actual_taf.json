@@ -1,5 +1,5 @@
 {
-    "fileName": "array_to_string_1_actual.py",
+    "fileName": "array_copy_1_actual.py",
     "day": "2022-10-09",
     "findings": [
         {
@@ -12,10 +12,10 @@
                 "targetNo": 1
             },
             "sink": {
-                "statement": "eval(array_1.__str__())",
+                "statement": "eval(array_2[2])",
                 "methodName": "function_call",
                 "className": "",
-                "lineNo": 10,
+                "lineNo": 12,
                 "targetName": "eval",
                 "targetNo": 1
             },
