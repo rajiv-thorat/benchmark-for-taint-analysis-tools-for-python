@@ -1,27 +1,27 @@
 {
-    "fileName": "if_statement_1_actual.py",
+    "fileName": "dict_access_1_false_positive.py",
     "day": "2022-10-09",
     "findings": [
         {
             "source": {
                 "statement": "command = request.view_args.get('operator')",
-                "methodName": "function_call",
+                "methodName": "dictionary_route",
                 "className": "",
                 "lineNo": 8,
                 "targetName": "get",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "eval(command)",
-                "methodName": "function_call",
+                "statement": "eval(diction.get('untainted'))",
+                "methodName": "dictionary_route",
                 "className": "",
-                "lineNo": 12,
+                "lineNo": 10,
                 "targetName": "eval",
                 "targetNo": 1
             },
-            "ID": 1,
-            "description": "Taint flow for the if statement actual benchmark test. Command injection vulnerability.",
-            "isNegative": false,
+            "ID": 2,
+            "description": "Taint flow for the dict access false positive benchmark test. Command injection vulnerability.",
+            "isNegative": true,
             "intermediateFlows": [],
             "attributes": {}
         }
