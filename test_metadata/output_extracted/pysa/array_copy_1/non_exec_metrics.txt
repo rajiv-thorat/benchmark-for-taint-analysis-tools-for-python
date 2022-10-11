@@ -1,0 +1,2 @@
+180.84user 22.04system 3:24.40elapsed 99%CPU (0avgtext+0avgdata 2665016maxresident)k
+70688inputs+2264outputs (508major+4833072minor)pagefaults 0swaps
