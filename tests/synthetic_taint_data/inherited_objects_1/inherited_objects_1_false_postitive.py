@@ -11,9 +11,7 @@ def inheritance_route() -> None:
     condition = 10 + 1
     instance = None
     if condition == 10:
-        instance = SubClassA()
-        instance.set_command(command)
+        instance = SubClassA(command)
     else:
-        instance = SubClassB()
-        instance.set_command('list')
+        instance = SubClassB('list')
     eval(instance.get_command())
