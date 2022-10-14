@@ -15,13 +15,3 @@ class Character:
 
     def get_name(self):
         return self.character_name
-
-    def set_path_san(self, path):
-        self.path_to_character_file_san = path
-
-    def get_path_san(self):
-        return self.sanitize(self.path_to_character_file_san)
-
-    def sanitize(self, command: str) -> str:
-        valid_commands = { 'list' : 'ls', 'stats': 'stat'}
-        return valid_commands[command]
