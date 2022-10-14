@@ -8,7 +8,7 @@ def exeption_route() -> None:
     command = ''
     try:
         command = request.view_args.get('operator')
-        raise RuntimeError()
+        raise RuntimeError(command)
     except RuntimeError as ex:
         # The sink is after the exception has been caught.
         eval(ex.message)
