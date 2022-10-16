@@ -3,7 +3,7 @@ class ClassB:
         self.command = ''
 
     def get_command(self):
-        return self.command
+        return 'list'
 
     def set_command(self, command):
         self.command = command
