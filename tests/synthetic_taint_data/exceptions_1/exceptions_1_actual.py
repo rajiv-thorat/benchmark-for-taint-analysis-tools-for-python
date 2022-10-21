@@ -4,7 +4,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 @app.route("/exception_route")
-def exeption_route() -> None:
+def exception_route() -> None:
     command = ''
     try:
         command = request.view_args.get('operator')

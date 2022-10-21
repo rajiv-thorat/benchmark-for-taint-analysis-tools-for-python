@@ -5,7 +5,7 @@ from numpy import empty
 app = Flask(__name__)
 
 @app.route("/exception_route")
-def exeption_route() -> None:
+def exception_route() -> None:
     empty_list = empty( numpy.sqrt(49), dtype=object)
     command = ''
     try:
