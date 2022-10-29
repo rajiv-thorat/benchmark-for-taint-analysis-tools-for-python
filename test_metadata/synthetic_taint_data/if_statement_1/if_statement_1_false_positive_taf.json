@@ -4,23 +4,23 @@
     "findings": [
         {
             "source": {
-                "statement": "command = request.view_args.get('operator')",
-                "methodName": "if_route",
+                "statement": "command = request.view_args.get('command')",
+                "methodName": "if_route()",
                 "className": "",
-                "lineNo": 8,
+                "lineNo": 13,
                 "targetName": "get",
                 "targetNo": 1
             },
             "sink": {
                 "statement": "eval(command)",
-                "methodName": "if_route",
+                "methodName": "if_route()",
                 "className": "",
-                "lineNo": 12,
+                "lineNo": 16,
                 "targetName": "eval",
                 "targetNo": 1
             },
             "ID": 2,
-            "description": "Taint flow for the 'if' statment false positive benchmark test. Command injection vulnerability.",
+            "description": "The false positive test case designed around the if statement checks for the detection of dead code or unreachable code. The condition for the branch is always false, i.e., the sink is dead or unreachable code. This detection of dead code will confirm if the analyses are path-sensitive.",
             "isNegative": true,
             "intermediateFlows": [],
             "attributes": {}

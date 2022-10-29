@@ -226,6 +226,152 @@
             "markdown": "Unsanitized input from {0} {1} into {2}, where it is executed as Python code. This may result in a Code Injection vulnerability.",
             "arguments": [
               "[an HTTP parameter](0)",
+              "[flows](1),(2),(3)",
+              "[eval](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "if_statement_1_actual.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 18,
+                  "endLine": 18,
+                  "startColumn": 9,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "39be558bf8b546ddf975defc894a35b2e8a0c05f27796e9a68cb8c120b05339b",
+            "1": "5eef81ba.de68ea1e.531bdceb.139c59a8.cc857d4e.ba14daf2.48119487.ebed174f.5eef81ba.de68ea1e.531bdceb.139c59a8.695bc178.ba14daf2.3dc707ee.100d6fba"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "if_statement_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 15,
+                            "endLine": 15,
+                            "startColumn": 15,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "if_statement_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 15,
+                            "endLine": 15,
+                            "startColumn": 15,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "if_statement_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 15,
+                            "endLine": 15,
+                            "startColumn": 5,
+                            "endColumn": 11
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "if_statement_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 14,
+                            "endColumn": 20
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "if_statement_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 9,
+                            "endColumn": 21
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 850,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "python/CodeInjection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into eval, where it is executed as Python code. This may result in a Code Injection vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is executed as Python code. This may result in a Code Injection vulnerability.",
+            "arguments": [
+              "[an HTTP parameter](0)",
               "[flows](1),(2),(3),(4),(5),(6),(7)",
               "[eval](8)"
             ]
@@ -238,8 +384,8 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 12,
-                  "endLine": 12,
+                  "startLine": 16,
+                  "endLine": 16,
                   "startColumn": 9,
                   "endColumn": 31
                 }
@@ -247,8 +393,8 @@
             }
           ],
           "fingerprints": {
-            "0": "41f2a598e2c27b86b9d67a605585ca50eb91a3e643184c005411677e856d59e1",
-            "1": "5eef81ba.976f7a3f.531bdceb.1e2c0147.005b9179.cc44d10e.a2237efa.f46ed94e.5eef81ba.976f7a3f.ba4f97fc.139c59a8.005b9179.cc44d10e.3dc707ee.f46ed94e"
+            "0": "f8c00b8788d984a13d88cf8fe5b9339c017543ac6bdeb64f05a8590e5b4ccd99",
+            "1": "5eef81ba.976f7a3f.531bdceb.1e2c0147.005b9179.cc44d10e.a2237efa.f46ed94e.5eef81ba.976f7a3f.531bdceb.139c59a8.005b9179.cc44d10e.3dc707ee.f46ed94e"
           },
           "codeFlows": [
             {
@@ -264,10 +410,10 @@
                             "uriBaseId": "%SRCROOT%"
                           },
                           "region": {
-                            "startLine": 8,
-                            "endLine": 8,
+                            "startLine": 12,
+                            "endLine": 12,
                             "startColumn": 15,
-                            "endColumn": 47
+                            "endColumn": 46
                           }
                         }
                       }
@@ -281,10 +427,10 @@
                             "uriBaseId": "%SRCROOT%"
                           },
                           "region": {
-                            "startLine": 8,
-                            "endLine": 8,
+                            "startLine": 12,
+                            "endLine": 12,
                             "startColumn": 15,
-                            "endColumn": 47
+                            "endColumn": 46
                           }
                         }
                       }
@@ -298,8 +444,8 @@
                             "uriBaseId": "%SRCROOT%"
                           },
                           "region": {
-                            "startLine": 8,
-                            "endLine": 8,
+                            "startLine": 12,
+                            "endLine": 12,
                             "startColumn": 5,
                             "endColumn": 11
                           }
@@ -315,8 +461,8 @@
                             "uriBaseId": "%SRCROOT%"
                           },
                           "region": {
-                            "startLine": 12,
-                            "endLine": 12,
+                            "startLine": 16,
+                            "endLine": 16,
                             "startColumn": 23,
                             "endColumn": 29
                           }
@@ -332,8 +478,8 @@
                             "uriBaseId": "%SRCROOT%"
                           },
                           "region": {
-                            "startLine": 14,
-                            "endLine": 14,
+                            "startLine": 18,
+                            "endLine": 18,
                             "startColumn": 14,
                             "endColumn": 25
                           }
@@ -349,8 +495,8 @@
                             "uriBaseId": "%SRCROOT%"
                           },
                           "region": {
-                            "startLine": 16,
-                            "endLine": 16,
+                            "startLine": 20,
+                            "endLine": 20,
                             "startColumn": 27,
                             "endColumn": 33
                           }
@@ -366,8 +512,8 @@
                             "uriBaseId": "%SRCROOT%"
                           },
                           "region": {
-                            "startLine": 16,
-                            "endLine": 16,
+                            "startLine": 20,
+                            "endLine": 20,
                             "startColumn": 12,
                             "endColumn": 34
                           }
@@ -383,8 +529,8 @@
                             "uriBaseId": "%SRCROOT%"
                           },
                           "region": {
-                            "startLine": 12,
-                            "endLine": 12,
+                            "startLine": 16,
+                            "endLine": 16,
                             "startColumn": 14,
                             "endColumn": 30
                           }
@@ -400,302 +546,10 @@
                             "uriBaseId": "%SRCROOT%"
                           },
                           "region": {
-                            "startLine": 12,
-                            "endLine": 12,
+                            "startLine": 16,
+                            "endLine": 16,
                             "startColumn": 9,
                             "endColumn": 31
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "priorityScore": 850,
-            "priorityScoreFactors": [
-              {
-                "label": true,
-                "type": "multipleOccurrence"
-              },
-              {
-                "label": true,
-                "type": "hotFileCodeFlow"
-              },
-              {
-                "label": true,
-                "type": "fixExamples"
-              }
-            ]
-          }
-        },
-        {
-          "ruleId": "python/CodeInjection",
-          "ruleIndex": 0,
-          "level": "error",
-          "message": {
-            "text": "Unsanitized input from an HTTP parameter flows into eval, where it is executed as Python code. This may result in a Code Injection vulnerability.",
-            "markdown": "Unsanitized input from {0} {1} into {2}, where it is executed as Python code. This may result in a Code Injection vulnerability.",
-            "arguments": [
-              "[an HTTP parameter](0)",
-              "[flows](1),(2),(3)",
-              "[eval](4)"
-            ]
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "if_statement_1_false_positive.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 12,
-                  "endLine": 12,
-                  "startColumn": 9,
-                  "endColumn": 21
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "0": "e0b1109c55a1629e421e8ed9cfb38ea9c502f11d47357a4c102c3de19606e4a6",
-            "1": "5eef81ba.b8b7f5e3.ba4f97fc.139c59a8.cc857d4e.ba14daf2.081ac3f4.6548d0d4.5eef81ba.b8b7f5e3.ba4f97fc.139c59a8.695bc178.ba14daf2.3dc707ee.100d6fba"
-          },
-          "codeFlows": [
-            {
-              "threadFlows": [
-                {
-                  "locations": [
-                    {
-                      "location": {
-                        "id": 0,
-                        "physicalLocation": {
-                          "artifactLocation": {
-                            "uri": "if_statement_1_false_positive.py",
-                            "uriBaseId": "%SRCROOT%"
-                          },
-                          "region": {
-                            "startLine": 8,
-                            "endLine": 8,
-                            "startColumn": 15,
-                            "endColumn": 47
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "location": {
-                        "id": 1,
-                        "physicalLocation": {
-                          "artifactLocation": {
-                            "uri": "if_statement_1_false_positive.py",
-                            "uriBaseId": "%SRCROOT%"
-                          },
-                          "region": {
-                            "startLine": 8,
-                            "endLine": 8,
-                            "startColumn": 15,
-                            "endColumn": 47
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "location": {
-                        "id": 2,
-                        "physicalLocation": {
-                          "artifactLocation": {
-                            "uri": "if_statement_1_false_positive.py",
-                            "uriBaseId": "%SRCROOT%"
-                          },
-                          "region": {
-                            "startLine": 8,
-                            "endLine": 8,
-                            "startColumn": 5,
-                            "endColumn": 11
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "location": {
-                        "id": 3,
-                        "physicalLocation": {
-                          "artifactLocation": {
-                            "uri": "if_statement_1_false_positive.py",
-                            "uriBaseId": "%SRCROOT%"
-                          },
-                          "region": {
-                            "startLine": 12,
-                            "endLine": 12,
-                            "startColumn": 14,
-                            "endColumn": 20
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "location": {
-                        "id": 4,
-                        "physicalLocation": {
-                          "artifactLocation": {
-                            "uri": "if_statement_1_false_positive.py",
-                            "uriBaseId": "%SRCROOT%"
-                          },
-                          "region": {
-                            "startLine": 12,
-                            "endLine": 12,
-                            "startColumn": 9,
-                            "endColumn": 21
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "priorityScore": 850,
-            "priorityScoreFactors": [
-              {
-                "label": true,
-                "type": "multipleOccurrence"
-              },
-              {
-                "label": true,
-                "type": "hotFileCodeFlow"
-              },
-              {
-                "label": true,
-                "type": "fixExamples"
-              }
-            ]
-          }
-        },
-        {
-          "ruleId": "python/CodeInjection",
-          "ruleIndex": 0,
-          "level": "error",
-          "message": {
-            "text": "Unsanitized input from an HTTP parameter flows into eval, where it is executed as Python code. This may result in a Code Injection vulnerability.",
-            "markdown": "Unsanitized input from {0} {1} into {2}, where it is executed as Python code. This may result in a Code Injection vulnerability.",
-            "arguments": [
-              "[an HTTP parameter](0)",
-              "[flows](1),(2),(3)",
-              "[eval](4)"
-            ]
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "if_statement_1_actual.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 12,
-                  "endLine": 12,
-                  "startColumn": 9,
-                  "endColumn": 21
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "0": "a2cc2f5f688946e02f6516377a5450d70da91c90ac46bfe450026e3f1b7e0b4d",
-            "1": "5eef81ba.b8b7f5e3.ba4f97fc.139c59a8.cc857d4e.ba14daf2.081ac3f4.6548d0d4.5eef81ba.b8b7f5e3.ba4f97fc.139c59a8.695bc178.ba14daf2.3dc707ee.100d6fba"
-          },
-          "codeFlows": [
-            {
-              "threadFlows": [
-                {
-                  "locations": [
-                    {
-                      "location": {
-                        "id": 0,
-                        "physicalLocation": {
-                          "artifactLocation": {
-                            "uri": "if_statement_1_actual.py",
-                            "uriBaseId": "%SRCROOT%"
-                          },
-                          "region": {
-                            "startLine": 8,
-                            "endLine": 8,
-                            "startColumn": 15,
-                            "endColumn": 47
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "location": {
-                        "id": 1,
-                        "physicalLocation": {
-                          "artifactLocation": {
-                            "uri": "if_statement_1_actual.py",
-                            "uriBaseId": "%SRCROOT%"
-                          },
-                          "region": {
-                            "startLine": 8,
-                            "endLine": 8,
-                            "startColumn": 15,
-                            "endColumn": 47
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "location": {
-                        "id": 2,
-                        "physicalLocation": {
-                          "artifactLocation": {
-                            "uri": "if_statement_1_actual.py",
-                            "uriBaseId": "%SRCROOT%"
-                          },
-                          "region": {
-                            "startLine": 8,
-                            "endLine": 8,
-                            "startColumn": 5,
-                            "endColumn": 11
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "location": {
-                        "id": 3,
-                        "physicalLocation": {
-                          "artifactLocation": {
-                            "uri": "if_statement_1_actual.py",
-                            "uriBaseId": "%SRCROOT%"
-                          },
-                          "region": {
-                            "startLine": 12,
-                            "endLine": 12,
-                            "startColumn": 14,
-                            "endColumn": 20
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "location": {
-                        "id": 4,
-                        "physicalLocation": {
-                          "artifactLocation": {
-                            "uri": "if_statement_1_actual.py",
-                            "uriBaseId": "%SRCROOT%"
-                          },
-                          "region": {
-                            "startLine": 12,
-                            "endLine": 12,
-                            "startColumn": 9,
-                            "endColumn": 21
                           }
                         }
                       }
