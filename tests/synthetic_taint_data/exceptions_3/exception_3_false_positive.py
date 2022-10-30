@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/exception_route")
 def exception_route() -> None:
-    empty_list = empty( numpy.sqrt(49), dtype=object)
+    empty_list = empty( 7, dtype=object)
     command = ''
     try:
         command = request.view_args.get('operator')
