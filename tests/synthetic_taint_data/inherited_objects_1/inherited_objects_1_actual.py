@@ -8,11 +8,7 @@ app = Flask(__name__)
 @app.route("/inheritance_route")
 def inheritance_route() -> None:
     command = request.view_args.get('operator')
-    condition = 10 + 1
-    instance = None
-    if condition == 11:
-        instance = SubClassA(command)
-    else:
-        instance = SubClassB('list')
+    instance = SubClassB('list')
+    instance = SubClassA(command)
     eval(instance.get_command())
 
