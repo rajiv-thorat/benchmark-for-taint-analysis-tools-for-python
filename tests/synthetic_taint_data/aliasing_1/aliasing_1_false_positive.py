@@ -14,7 +14,7 @@ def aliasing_route() -> None:
     b = ClassA()
     q = ClassA()
 
-    if False:
+    if True:
         x = a
         y = b
     else:
