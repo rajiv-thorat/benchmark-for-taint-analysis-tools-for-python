@@ -1,10 +1,21 @@
 from harness import Harness
 from snyk_harness import SnykHarness
 from pysa_harness import PysaHarness
+import utils
+from os import path
+import logging
 
 if __name__== '__main__':
+    """ if not utils.DIRECTORY_FOR_RAW_OUTPUT.exists():
+        os.mkdir(utils.DIRECTORY_FOR_RAW_OUTPUT)
+    if not utils.DIRECTORY_FOR_EXTRACTED_OUTPUT.exists():
+        os.mkdir(utils.DIRECTORY_FOR_EXTRACTED_OUTPUT) """
     for tool in Harness.__subclasses__():
         tool_harness_instance = tool()
-        tool_harness_instance.run_tool_on_synthetic_tests()
+        for test_directory in [x for x in utils.DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA.iterdir() if x.is_dir() and x.name != 'experiments']:
+            logging.info(f'Running {tool_harness_instance.get_harness_type} on test {directory.name}.')
+            tool_harness_instance.make_output_directories(directory)
+            tool_harness_instance.run_tool_on_directory(test_directory)
+            tool_harness_instance.move_results()
         #tool_harness_instance.run_tool_on_real_world_tests()
-        tool_harness_instance.compare_results()
+        #tool_harness_instance.compare_results()
