@@ -4,6 +4,7 @@ import subprocess
 import logging
 from os.path import abspath
 from harness import Harness
+from pathlib import Path
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(levelname)s:%(message)s")
 logging.getLogger().setLevel(logging.DEBUG)
@@ -12,7 +13,7 @@ class CodeQLHarness(Harness):
     harness_name = 'codeql'
     PATH_TO_THE_EXECUTION_SHELL_SCRIPT = 'test_harness/codeql_files/analyze_security.sh'
 
-    def run_tool_on_directory(self, directory):
+    def run_tool_on_directory(self, directory:Path):
         # Running docker over the synthetic and real world tests in a single execution to keep the number of runs to a minimum.
         # docker run --rm --name codeql-container -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_taint_data/if_statement:/opt/src -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_metadata/outputs/temp_codeql_db_location:/opt/results -e CODEQL_CLI_ARGS="database analyze --format=csv --output=/opt/results/issues.csv /opt/results/source_db python-security-and-quality.qls" mcr.microsoft.com/cstsectools/codeql-container
         # sh test-harness/codeql_files/analyze_security.sh /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_taint_data/if_statement /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_metadata/outputs/temp_codeql_db_location python
@@ -20,8 +21,8 @@ class CodeQLHarness(Harness):
         # sh /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_harness/codeql_files/analyze_security.sh /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_taint_data/with_statement_3 /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_metadata/outputs_raw/codeql/with_statement_3 python
         command = ['sh', 
         PATH_TO_THE_EXECUTION_SHELL_SCRIPT,
-        directory.absolute(), 
-        utils.DIRECTORY_FOR_RAW_OUTPUT.joinpath(self.get_harness_type(), directory), 
+        directory.absolute().__str__(), 
+        self.get_raw_output_dir_for_input_dir(directory).absolute().__str__(), 
         'python']
         command_output = subprocess.run(command, stdout=PIPE, stderr=PIPE, shell=False, universal_newlines=True)
         logging.info(f'Finished executing {command_output.args}')
@@ -31,4 +32,8 @@ class CodeQLHarness(Harness):
             logging.error(f"The subprocess returned {command_output.returncode} code. There was a problem running the CodeQL docker image.")
 
     def move_results(self):
-        pass
+        copy(self.get_raw_output_dir_for_input_dir(directory).joinpath('issues.csv').absolute().__str__(), 
+        self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())
+        for exec_metric_file_path in self.get_raw_output_dir_for_input_dir(directory).glob('*.txt'):
+            copy(exec_metric_file_path.absolute().__str__(), 
+            self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())

@@ -6,6 +6,7 @@ from os.path import abspath
 from harness import Harness
 from pathlib import Path
 import utils
+from shutil import copy
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(levelname)s:%(message)s")
 logging.getLogger().setLevel(logging.DEBUG)
@@ -22,8 +23,8 @@ class SnykHarness(Harness):
         '--rm', 
         #'-it', 
         '-e', f'SNYK_TOKEN={self.SNYK_TOKEN}', 
-        '-v', f'{directory.absolute()}:/app', 
-        '-v', f'{utils.DIRECTORY_FOR_RAW_OUTPUT.joinpath(self.get_harness_type(), directory)}:/op', 
+        '-v', f'{directory.absolute().__str__()}:/app', 
+        '-v', f'{self.get_raw_output_dir_for_input_dir(directory).absolute().__str__()}:/op', 
         'local/snyk-container']
         command_output = subprocess.run(command, stdout=PIPE, stderr=PIPE, shell=False, universal_newlines=True)
         logging.info(f'Finished executing {command_output.args}')
@@ -31,6 +32,10 @@ class SnykHarness(Harness):
             command_output.check_returncode()
         except:
             logging.error(f"The subprocess returned {command_output.returncode} code. There was a problem running the Snyk docker image.")
+        copy(directory.joinpath('.dccache').absolute().__str__(), self.get_raw_output_dir_for_input_dir(directory).absolute().__str__())
 
-    def move_results(self):
-        pass
+    def move_results(self, directory:Path):
+        copy(self.get_raw_output_dir_for_input_dir(directory).joinpath('issues.json').absolute().__str__(), 
+        self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())
+        copy(self.get_raw_output_dir_for_input_dir(directory).joinpath('non_exec_metrics.txt').absolute().__str__(), 
+        self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())

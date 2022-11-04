@@ -17,8 +17,8 @@ class PysaHarness(Harness):
         '--rm', 
         #'-it', 
         '-v', f'{self.DIRECTORY_PATH_FOR_PYSA_CONFIG.absolute()}:/config', 
-        '-v', f'{directory.absolute()}:/code', 
-        '-v', f'{utils.DIRECTORY_FOR_RAW_OUTPUT.joinpath(self.get_harness_type(), directory)}:/op', 
+        '-v', f'{directory.absolute().__str__()}:/code', 
+        '-v', f'{self.get_raw_output_dir_for_input_dir(directory).absolute().__str__()}:/op', 
         'local/pysa']
         command_output = subprocess.run(command, stdout=PIPE, stderr=PIPE, shell=False, universal_newlines=True)
         logging.info(f'Finished executing {command_output.args}')
@@ -28,4 +28,7 @@ class PysaHarness(Harness):
             logging.error(f"The subprocess returned {command_output.returncode} code. There was a problem running the Pysa docker image.")
 
     def move_results(self):
-        pass
+        copy(self.get_raw_output_dir_for_input_dir(directory).joinpath('errors.json').absolute().__str__(), 
+        self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())
+        copy(self.get_raw_output_dir_for_input_dir(directory).joinpath('non_exec_metrics.txt').absolute().__str__(), 
+        self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())
