@@ -11,11 +11,11 @@ class Harness(ABC):
 
     @abc.abstractmethod
     def run_tool_on_directory(self, directory:Path):
-        raise NotImplementedError('Please implement before use.')
+       ... 
 
     @abc.abstractmethod
     def move_results(self):
-        raise NotImplementedError('Please implement before use.')
+        ...
 
     def make_output_directories(self, directory:Path):
         """ if not utils.DIRECTORY_FOR_RAW_OUTPUT.joinpath(self.get_harness_type()).exists():

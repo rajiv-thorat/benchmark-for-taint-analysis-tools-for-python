@@ -17,5 +17,3 @@ if __name__== '__main__':
             tool_harness_instance.make_output_directories(test_directory)
             tool_harness_instance.run_tool_on_directory(test_directory)
             tool_harness_instance.move_results(test_directory)
-        #tool_harness_instance.run_tool_on_real_world_tests()
-        #tool_harness_instance.compare_results()

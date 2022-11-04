@@ -5,6 +5,8 @@ import logging
 from os.path import abspath
 from harness import Harness
 from pathlib import Path
+import requests
+from time import sleep, time
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(levelname)s:%(message)s")
 logging.getLogger().setLevel(logging.DEBUG)
@@ -19,6 +21,7 @@ class CodeQLHarness(Harness):
         # sh test-harness/codeql_files/analyze_security.sh /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_taint_data/if_statement /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_metadata/outputs/temp_codeql_db_location python
         # docker run --rm --name codeql-container -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_metadata/outputs/temp_codeql_db_location/source_db/results/codeql/python-queries/Security/CWE-078:/data -e CODEQL_CLI_ARGS="bqrs decode --format=csv -o /data/data.csv /data/CommandInjection.bqrs" mcr.microsoft.com/cstsectools/codeql-container 
         # sh /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_harness/codeql_files/analyze_security.sh /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_taint_data/with_statement_3 /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_metadata/outputs_raw/codeql/with_statement_3 python
+        check_github_api_status()
         command = ['sh', 
         PATH_TO_THE_EXECUTION_SHELL_SCRIPT,
         directory.absolute().__str__(), 
@@ -37,3 +40,14 @@ class CodeQLHarness(Harness):
         for exec_metric_file_path in self.get_raw_output_dir_for_input_dir(directory).glob('*.txt'):
             copy(exec_metric_file_path.absolute().__str__(), 
             self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())
+    
+    def check_github_api_status(self):
+        logging.info('Checking the API status of GitHub.')
+        response = requests.get('https://api.github.com')
+        remaining_calls = response.headers.get('x-ratelimit-remaining')
+        calls_reset_at = response.headers.get('x-ratelimit-reset')
+        logging.info(f'{remaining_calls} remaining API calls until {calls_reset_at}.')
+        time_diff = int(calls_reset_at) - time()
+        if int(remaining_calls) < 20:
+            logging.info(f'Sleeping for {time_diff} seconds to let the GitHub API counter reset.')
+            sleep(time_diff + 5)
