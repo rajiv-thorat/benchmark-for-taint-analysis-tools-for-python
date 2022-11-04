@@ -32,3 +32,11 @@ class PysaHarness(Harness):
         self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())
         copy(self.get_raw_output_dir_for_input_dir(directory).joinpath('non_exec_metrics.txt').absolute().__str__(), 
         self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())
+
+if __name__== '__main__':
+    tool_harness_instance = PysaHarness()
+    for test_directory in [x for x in utils.DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA.iterdir() if x.is_dir() and x.name != 'experiments']:
+        logging.info(f'Running {tool_harness_instance.get_harness_type()} on test {test_directory.name}.')
+        tool_harness_instance.make_output_directories(test_directory)
+        tool_harness_instance.run_tool_on_directory(test_directory)
+        tool_harness_instance.move_results(test_directory)

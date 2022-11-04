@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-TAF_FILE = "taf.json"
 PROJECT_META_DATA = "meta-data.json"
 SNYK_RESULT_FILE = "snyk-result.json"
 DIRECTORY_PATH_FOR_TESTS = "tests/"

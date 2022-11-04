@@ -2,38 +2,40 @@ import utils
 from os import listdir, path
 from numpy import average
 from csv import writer
+import logging
 
 class NonExecMetricsCollector:
     def collect(self):
         summary = {}
-        for tool_name in utils.DIRECTORY_PATH_FOR_OUTPUTS.keys():
-            #summary[tool_name] = []
-            print(tool_name)
-            for directory in listdir(utils.DIRECTORY_PATH_FOR_OUTPUTS.get(tool_name)):
-                if not directory in summary.keys():
-                    summary[directory] = []
+        for tool in Harness.__subclasses__():
+            tool_harness_instance = tool()
+            extracted_op_dir_for_tool = utils.DIRECTORY_FOR_EXTRACTED_OUTPUT.joinpath(tool_harness_instance.get_harness_type())
+            logging.info(tool_harness_instance.get_harness_type())
+            for test_op_dir in extracted_op_dir_for_tool.iterdir():
+                if not test_op_dir.name in summary.keys():
+                    summary[test_op_dir.name] = []
                 total_metrics_for_test = {
                 'total_execution_time': 0.0 ,
                 'max_mem_usage_in_kb' : '',
                 'no_of_file_system_inputs' : 0,
                 'no_of_file_system_outputs' : 0
-            }
-                for op_file in listdir(utils.DIRECTORY_PATH_FOR_OUTPUTS.get(tool_name) + path.sep + directory):
+                }
+                
+                for op_file in test_op_dir.glob('*.txt'):
                     # Multiple non exec metric files only for codeql. There are three separate times the tool is invoked for various steps.
-                    if op_file.endswith('.txt'):
-                        current_file_data = self.parse_non_exec_metric_file(utils.DIRECTORY_PATH_FOR_OUTPUTS.get(tool_name) + path.sep + directory + path.sep + op_file)
-                        # Add all the execution time. 
-                        total_metrics_for_test['total_execution_time'] = total_metrics_for_test['total_execution_time'] + current_file_data['total_execution_time']
-                        # Use the max value of all the runs.
-                        total_metrics_for_test['max_mem_usage_in_kb'] = str(total_metrics_for_test['max_mem_usage_in_kb']) + ',' + str(current_file_data['max_mem_usage_in_kb'])
-                        # Add all the system inputs.
-                        total_metrics_for_test['no_of_file_system_inputs'] = total_metrics_for_test['no_of_file_system_inputs'] + current_file_data['no_of_file_system_inputs']
-                        # Add all the system outputs.
-                        total_metrics_for_test['no_of_file_system_outputs'] = total_metrics_for_test['no_of_file_system_outputs'] + current_file_data['no_of_file_system_outputs']
+                    current_file_data = self.parse_non_exec_metric_file(op_file.absolute().__str__())
+                     # Add all the execution time. 
+                    total_metrics_for_test['total_execution_time'] = total_metrics_for_test['total_execution_time'] + current_file_data['total_execution_time']
+                    # Use the max value of all the runs.
+                    total_metrics_for_test['max_mem_usage_in_kb'] = str(total_metrics_for_test['max_mem_usage_in_kb']) + ',' + str(current_file_data['max_mem_usage_in_kb'])
+                    # Add all the system inputs.
+                    total_metrics_for_test['no_of_file_system_inputs'] = total_metrics_for_test['no_of_file_system_inputs'] + current_file_data['no_of_file_system_inputs']
+                    # Add all the system outputs.
+                    total_metrics_for_test['no_of_file_system_outputs'] = total_metrics_for_test['no_of_file_system_outputs'] + current_file_data['no_of_file_system_outputs']
                 total_metrics_for_test['max_mem_usage_in_kb'] = max(
                 [int(n) for n in str(total_metrics_for_test['max_mem_usage_in_kb'])[1:].split(',')])
                 
-                summary.get(directory).append({
+                summary.get(test_op_dir.name).append({
                     tool_name : total_metrics_for_test
                 })
 
