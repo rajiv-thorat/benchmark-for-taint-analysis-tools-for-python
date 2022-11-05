@@ -11,7 +11,7 @@ NON_EXEC_METRICS_SUMMARY_FILE = Path('non_exec_metrics_summary.csv')
 DIRECTORY_FOR_RAW_OUTPUT = Path('test_metadata/outputs_raw')
 DIRECTORY_FOR_EXTRACTED_OUTPUT = Path('test_metadata/output_extracted')
 DIRECTORY_PATH_FOR_REALWORLD_PROJECTS = Path('tests/real-world-projects/')
-DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA = Path('tests/synthetic_taint_data')
+DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA = Path('tests/synthetic_tests')
 
 # This is for the output from the Snyk tool. The result is enclosed in single quotes, and there is a "b"
 # at the begining that need to be removed for the string to be parsable as JSON.
