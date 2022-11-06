@@ -2,6 +2,9 @@ from abc import ABC
 import abc
 from pathlib import Path
 import utils
+import logging
+
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(levelname)s:%(message)s")
 
 class Harness(ABC):
     harness_name = 'Unimplemented'
@@ -18,6 +21,7 @@ class Harness(ABC):
         ...
 
     def make_output_directories(self, test_input_direcory:Path):
+        logging.info('Creating the output directories.')
         utils.DIRECTORY_FOR_RAW_OUTPUT.joinpath(self.get_harness_type(), test_input_direcory.name).mkdir(parents=True)
         utils.DIRECTORY_FOR_EXTRACTED_OUTPUT.joinpath(self.get_harness_type(), test_input_direcory.name).mkdir(parents=True)
     
@@ -36,5 +40,6 @@ class Harness(ABC):
         ... """
 
     def get_test_files_for_result_evaluation(self, directory:Path):
+        logging.info('Reading the TAF files.')
         taf_files = list(utils.DIRECTORY_FOR_TEST_META_DATA.joinpath(directory.name).glob('*_taf.json'))
         return [test_file.name[:len(test_file.name) - 9] for test_file in taf_files]

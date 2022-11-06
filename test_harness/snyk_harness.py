@@ -1,6 +1,5 @@
 from subprocess import run
 import logging
-from os.path import abspath
 from harness import Harness
 from pathlib import Path
 import utils
@@ -28,7 +27,7 @@ class SnykHarness(Harness):
         try:
             command_output.check_returncode()
         except:
-            logging.error(f"The subprocess returned {command_output.returncode} code. There was a problem running the Snyk docker image.")
+            logging.error(f"The subprocess returned {command_output.returncode} code. Snyk returns error code if vulnerabilities are found.")
         copy(test_input_directory.joinpath('.dccache').absolute().__str__(), self.get_raw_output_dir_for_input_dir(test_input_directory).absolute().__str__())
 
     def move_results(self, test_input_directory:Path):
