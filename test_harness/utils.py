@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-PROJECT_META_DATA = "meta-data.json"
 SNYK_RESULT_FILE = "snyk-result.json"
 DIRECTORY_PATH_FOR_TESTS = "tests/"
 DIRECTORY_PATH_FOR_OUTPUT = "output/"
@@ -12,6 +11,7 @@ DIRECTORY_FOR_RAW_OUTPUT = Path('test_metadata/outputs_raw')
 DIRECTORY_FOR_EXTRACTED_OUTPUT = Path('test_metadata/output_extracted')
 DIRECTORY_PATH_FOR_REALWORLD_PROJECTS = Path('tests/real-world-projects/')
 DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA = Path('tests/synthetic_tests')
+DIRECTORY_FOR_TEST_META_DATA = Path('test_metadata/synthetic_taint_data')
 
 # This is for the output from the Snyk tool. The result is enclosed in single quotes, and there is a "b"
 # at the begining that need to be removed for the string to be parsable as JSON.
