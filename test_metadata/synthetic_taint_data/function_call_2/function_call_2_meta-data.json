@@ -1,0 +1,8 @@
+{
+    "name": "function_call_2",
+    "description": "This is a simple test case where the sink is in a function.",
+    "n_files": 1,
+    "lines_of_code": 54,
+    "n_classes": 0,
+    "repo_url": ""
+}
