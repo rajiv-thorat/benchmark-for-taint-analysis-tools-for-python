@@ -6,13 +6,14 @@ import utils
 class PytHarness(Harness):
     harness_name = 'pyt'
     def run_tool_on_directory(self, test_input_directory:Path):
-        # inside docker container:
-        # docker run --rm -it -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_tests/if_statement_1:/app -v /home/rajiv/temp_:/op local/pyt-container
+        # docker run --rm -it -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_harness/pyt_files/docker_build/pyt:/pyt -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_tests/if_statement_1:/app python:3.8-buster sh
+        # docker run --rm -it -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_tests/if_statement_1:/app -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_harness/pyt_files/docker_build/pyt:/pyt -v /home/rajiv/temp_:/op local/pyt-container        
         command = ['docker', 
         'run', 
         '--rm', 
         #'-it', 
         '-v', f'{test_input_directory.absolute().__str__()}:/app', 
+        '-v', f'{utils.DIRECTORY_FOR_THE_PYT_PROJECT.absolute().__str__()}:/pyt',
         '-v', f'{self.get_raw_output_dir_for_input_dir(test_input_directory).absolute().__str__()}:/op', 
         'local/pyt-container']
         command_output = subprocess.run(command)
