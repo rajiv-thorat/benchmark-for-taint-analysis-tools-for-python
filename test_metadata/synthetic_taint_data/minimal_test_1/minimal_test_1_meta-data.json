@@ -1,0 +1,8 @@
+{
+    "name": "minimal_test_1",
+    "description": "A minimal test case with the sink in the constructor.",
+    "n_files": 3,
+    "lines_of_code": 54,
+    "n_classes": 0,
+    "repo_url": ""
+}
