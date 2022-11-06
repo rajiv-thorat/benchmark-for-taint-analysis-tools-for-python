@@ -1,7 +1,7 @@
 {
     "name": "while_statement_1",
     "description": "This is the test case to check if the static analysis tools work with looping.",
-    "n_files": 5,
+    "n_files": 3,
     "lines_of_code": 43,
     "n_classes": 0,
     "repo_url": ""

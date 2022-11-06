@@ -1,26 +1,26 @@
 {
-    "fileName": "list_access_1_actual.py",
+    "fileName": "array_access_1_actual.py",
     "day": "2022-10-09",
     "findings": [
         {
             "source": {
                 "statement": "command = request.view_args.get('operator')",
-                "methodName": "list_route",
+                "methodName": "array_route",
                 "className": "",
                 "lineNo": 8,
                 "targetName": "get",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "eval(command)",
-                "methodName": "list_route",
+                "statement": "eval(new_array[1])",
+                "methodName": "array_route",
                 "className": "",
-                "lineNo": 12,
+                "lineNo": 13,
                 "targetName": "eval",
                 "targetNo": 1
             },
             "ID": 1,
-            "description": "Taint flow for the if statement actual benchmark test. Command injection vulnerability.",
+            "description": "Taint flow for the array benchmark test. Command injection vulnerability.",
             "isNegative": false,
             "intermediateFlows": [],
             "attributes": {}

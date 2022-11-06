@@ -1,36 +1,28 @@
 {
-    "fileName": "list_access_1_false_positive.py",
+    "fileName": "array_access_1_false_positive.py",
     "day": "2022-10-09",
     "findings": [
         {
             "source": {
                 "statement": "command = request.view_args.get('operator')",
-                "methodName": "list_route",
+                "methodName": "array_route",
                 "className": "",
                 "lineNo": 8,
                 "targetName": "get",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "eval(linked_list.popleft())",
-                "methodName": "list_route",
+                "statement": "eval(new_array[2])",
+                "methodName": "array_route",
                 "className": "",
                 "lineNo": 13,
                 "targetName": "eval",
                 "targetNo": 1
             },
             "ID": 2,
-            "description": "Taint flow for the 'if' statment false positive benchmark test. Command injection vulnerability.",
+            "description": "Taint flow for the array benchmark test. Command injection vulnerability.",
             "isNegative": true,
-            "intermediateFlows": [
-                {
-                    "statement": "linked_list.popleft()",
-                    "methodName": "list_route",
-                    "className": "",
-                    "lineNo": 13,
-                    "ID": 1
-                }
-            ],
+            "intermediateFlows": [],
             "attributes": {}
         }
     ]

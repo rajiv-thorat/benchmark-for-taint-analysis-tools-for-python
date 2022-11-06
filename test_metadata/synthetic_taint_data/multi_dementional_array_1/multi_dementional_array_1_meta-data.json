@@ -1,7 +1,7 @@
 {
     "name": "multi_dementional_array_1",
     "description": "This is the test case to check if the static analysis tools work with multi dementional arrays.",
-    "n_files": 3,
+    "n_files": 2,
     "lines_of_code": 12,
     "n_classes": 0,
     "repo_url": ""

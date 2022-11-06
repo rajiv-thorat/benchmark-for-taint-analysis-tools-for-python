@@ -1,7 +1,7 @@
 {
     "name": "field_sensitivity_3",
     "description": "This is the test case to check for field sensitivity.",
-    "n_files": 5,
+    "n_files": 3,
     "lines_of_code": 56,
     "n_classes": 1,
     "repo_url": ""
