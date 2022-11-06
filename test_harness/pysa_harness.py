@@ -6,7 +6,7 @@ import utils
 class PysaHarness(Harness):
     DIRECTORY_PATH_FOR_PYSA_CONFIG = Path('test_harness/pysa_files/pysa_config')
     harness_name = 'pysa'
-    def run_tool_on_directory(self, directory:Path):
+    def run_tool_on_directory(self, test_input_directory:Path):
         # inside docker container:
         # pyre init-pysa
         # pyre analyze --no-verify --save-results-to ./pysa-runs
@@ -17,8 +17,8 @@ class PysaHarness(Harness):
         '--rm', 
         #'-it', 
         '-v', f'{self.DIRECTORY_PATH_FOR_PYSA_CONFIG.absolute()}:/config', 
-        '-v', f'{directory.absolute().__str__()}:/code', 
-        '-v', f'{self.get_raw_output_dir_for_input_dir(directory).absolute().__str__()}:/op', 
+        '-v', f'{test_input_directory.absolute().__str__()}:/code', 
+        '-v', f'{self.get_raw_output_dir_for_input_dir(test_input_directory).absolute().__str__()}:/op', 
         'local/pysa']
         command_output = subprocess.run(command, stdout=PIPE, stderr=PIPE, shell=False, universal_newlines=True)
         logging.info(f'Finished executing {command_output.args}')

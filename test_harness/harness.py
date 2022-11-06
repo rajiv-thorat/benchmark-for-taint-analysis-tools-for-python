@@ -10,14 +10,14 @@ class Harness(ABC):
         return self.harness_name
 
     @abc.abstractmethod
-    def run_tool_on_directory(self, directory:Path):
+    def run_tool_on_directory(self, test_input_directory:Path):
        ... 
 
     @abc.abstractmethod
     def move_results(self):
         ...
 
-    def make_output_directories(self, directory:Path):
+    def make_output_directories(self, test_input_directory:Path):
         """ if not utils.DIRECTORY_FOR_RAW_OUTPUT.joinpath(self.get_harness_type()).exists():
             utils.DIRECTORY_FOR_RAW_OUTPUT.joinpath(self.get_harness_type()).mkdir()
         if not utils.DIRECTORY_FOR_EXTRACTED_OUTPUT.joinpath(self.get_harness_type()).exists():
@@ -27,14 +27,15 @@ class Harness(ABC):
         if not utils.DIRECTORY_FOR_EXTRACTED_OUTPUT.joinpath(self.get_harness_type(), directory.name).exists():
             utils.DIRECTORY_FOR_EXTRACTED_OUTPUT.joinpath(self.get_harness_type(), directory.name).mkdir()
     
-    def get_raw_output_dir_for_input_dir(self, directory:Path):
+    def get_raw_output_dir_for_input_dir(self, test_input_directory:Path):
         return utils.DIRECTORY_FOR_RAW_OUTPUT.joinpath(self.get_harness_type(), directory.name)
     
-    def get_ext_output_dir_for_input_dir(self, directory:Path):
+    def get_ext_output_dir_for_input_dir(self, test_input_directory:Path):
         return utils.DIRECTORY_FOR_EXTRACTED_OUTPUT.joinpath(self.get_harness_type(), directory.name)
 
-    def make_results_comparable(self):
-        raise NotImplementedError('Please implement before use.')
+    @abc.abstractmethod
+    def record_results(self, test_input_directory:Path):
+        ...
 
     def compare_results(self):
         raise NotImplementedError('Please implement before use.')

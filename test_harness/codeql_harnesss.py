@@ -15,7 +15,7 @@ class CodeQLHarness(Harness):
     harness_name = 'codeql'
     PATH_TO_THE_EXECUTION_SHELL_SCRIPT = 'test_harness/codeql_files/analyze_security.sh'
 
-    def run_tool_on_directory(self, directory:Path):
+    def run_tool_on_directory(self, test_input_directory:Path):
         # Running docker over the synthetic and real world tests in a single execution to keep the number of runs to a minimum.
         # docker run --rm --name codeql-container -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_taint_data/if_statement:/opt/src -v /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_metadata/outputs/temp_codeql_db_location:/opt/results -e CODEQL_CLI_ARGS="database analyze --format=csv --output=/opt/results/issues.csv /opt/results/source_db python-security-and-quality.qls" mcr.microsoft.com/cstsectools/codeql-container
         # sh test-harness/codeql_files/analyze_security.sh /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/tests/synthetic_taint_data/if_statement /home/rajiv/git/MasterArbeit/submodules/benchmark-for-taint-analysis-tools-for-python/test_metadata/outputs/temp_codeql_db_location python
@@ -25,8 +25,8 @@ class CodeQLHarness(Harness):
         check_github_api_status()
         command = ['sh', 
         PATH_TO_THE_EXECUTION_SHELL_SCRIPT,
-        directory.absolute().__str__(), 
-        self.get_raw_output_dir_for_input_dir(directory).absolute().__str__(), 
+        test_input_directory.absolute().__str__(), 
+        self.get_raw_output_dir_for_input_dir(test_input_directory).absolute().__str__(), 
         'python']
         command_output = subprocess.run(command, stdout=PIPE, stderr=PIPE, shell=False, universal_newlines=True)
         logging.info(f'Finished executing {command_output.args}')
