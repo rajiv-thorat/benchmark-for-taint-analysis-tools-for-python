@@ -8,3 +8,6 @@
 [submodule "codeql-container"]
 	path = test_harness/codeql_files/codeql-container
 	url = git@github.com:rajiv-thorat/codeql-container.git
+[submodule "pyt"]
+	path = test_harness/pyt_files/docker_build/pyt
+	url = git@github.com:rajiv-thorat/pyt.git
