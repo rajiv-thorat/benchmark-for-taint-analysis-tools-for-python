@@ -4,6 +4,7 @@ from pysa_harness import PysaHarness
 import utils
 from os import path
 import logging
+from non_exec_metrics_collector import NonExecMetricsCollector
 
 if __name__== '__main__':
     for tool in Harness.__subclasses__():

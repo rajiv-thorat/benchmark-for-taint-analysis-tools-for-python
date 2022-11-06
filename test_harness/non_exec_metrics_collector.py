@@ -1,5 +1,4 @@
 import utils
-from os import listdir, path
 from numpy import average
 from csv import writer
 import logging
@@ -10,7 +9,7 @@ class NonExecMetricsCollector:
         for tool in Harness.__subclasses__():
             tool_harness_instance = tool()
             extracted_op_dir_for_tool = utils.DIRECTORY_FOR_EXTRACTED_OUTPUT.joinpath(tool_harness_instance.get_harness_type())
-            logging.info(tool_harness_instance.get_harness_type())
+            logging.info(f'Collecting exect metrics for {tool_harness_instance.get_harness_type()}.')
             for test_op_dir in extracted_op_dir_for_tool.iterdir():
                 if not test_op_dir.name in summary.keys():
                     summary[test_op_dir.name] = []
@@ -43,7 +42,8 @@ class NonExecMetricsCollector:
         
 
     def write_summary_to_csv(self, summary):
-        with open(utils.NON_EXEC_METRICS_SUMMARY_FILE, 'w') as csvfile:
+        utils.NON_EXEC_METRICS_SUMMARY_FILE.touch(exist_ok=True)
+        with utils.NON_EXEC_METRICS_SUMMARY_FILE.open('w') as csvfile:
             csv_writer = writer(csvfile)
             header_row = ['test_name']
             for test_name in summary.keys():
@@ -62,8 +62,6 @@ class NonExecMetricsCollector:
                         for metric_value in metrics.values():
                             metric_row.append(metric_value)
                 csv_writer.writerow(metric_row)
-            #w.writerows(summary.items())
-            print('test')
             
 
                 
