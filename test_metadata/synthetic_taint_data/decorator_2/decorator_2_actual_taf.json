@@ -1,0 +1,29 @@
+{
+    "fileName": "decorator_2_actual.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('command)",
+                "methodName": "decorator_route()",
+                "className": "",
+                "lineNo": 13,
+                "targetName": "get",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(command)",
+                "methodName": "__call__()",
+                "className": "TaintedDecorator",
+                "lineNo": 22,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 2797969452,
+            "description": "In this test case we check the support for decorators. The method decorator_route() contains the source and is wrapped in the TaintedDecorator. The sink is in the __call__ function of class TaintedDecorator. This decorator is the class type.",
+            "isNegative": false,
+            "intermediateFlows": [],
+            "attributes": {}
+        }
+    ]
+}
