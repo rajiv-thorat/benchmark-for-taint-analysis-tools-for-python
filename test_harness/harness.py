@@ -31,9 +31,9 @@ class Harness(ABC):
     def record_results(self, test_input_directory:Path):
         ...
 
-    @abc.abstractmethod
+    """ @abc.abstractmethod
     def compare_results(self):
-        ...
+        ... """
 
     def get_test_files_for_result_evaluation(self, directory:Path):
         taf_files = list(utils.DIRECTORY_FOR_TEST_META_DATA.joinpath(directory.name).glob('*_taf.json'))
