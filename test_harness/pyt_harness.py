@@ -35,7 +35,6 @@ class PytHarness(Harness):
         self.get_ext_output_dir_for_input_dir(test_input_directory).absolute().__str__())
 
     def record_results(self, test_input_directory):
-        logging.info('Recording the results.')
         files_to_look_for = self.get_test_files_for_result_evaluation(test_directory)
         results = {}
         for file_to_look_for in files_to_look_for:
@@ -48,6 +47,7 @@ class PytHarness(Harness):
                     if file_to_look_for in vulnerability.get('sink').get('path'):
                         results[file_to_look_for] = True
                         
+        logging.info('Recording the results.')
         for result_key in results.keys():
             utils.write_to_csv_file(Path(f'{self.get_harness_type()}-result.csv'), [result_key, results.get(result_key)])
 
