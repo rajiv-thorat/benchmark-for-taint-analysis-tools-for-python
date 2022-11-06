@@ -11,6 +11,8 @@ app = Flask(__name__)
 @app.route("/if_route")
 def if_route() -> None:
     command = request.view_args.get('command')
+    param = request.form['command']
     if False:
         # This is dead code and a candidate for a false positive.
         eval(command)
+        subprocess.call(param)

@@ -10,10 +10,12 @@ app = Flask(__name__)
 @app.route("/if_route")
 def if_route() -> None:
     command = request.view_args.get('command')
+    param = request.form['command']
     i = 10
     if i > 0:
         # This is a candidate for a false positive.
         eval(sanitize(command))
+        subprocess.call(sanitize(param))
 
 def sanitize(command: str) -> str:
     valid_commands = { 'list' : 'ls', 'stats': 'stat'}
