@@ -5,7 +5,8 @@ import utils
 from subprocess import run
 from shutil import copy
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(levelname)s:%(message)s")
+
 class PytHarness(Harness):
     harness_name = 'pyt'
     def run_tool_on_directory(self, test_input_directory:Path):
@@ -36,11 +37,11 @@ class PytHarness(Harness):
     def record_results(self, test_input_directory):
         logging.info('Recording the results.')
         files_to_look_for = self.get_test_files_for_result_evaluation(test_directory)
-        output_data = utils.read_json_file(self.get_ext_output_dir_for_input_dir(test_input_directory).joinpath('vuls.json'))
-        #output_data = utils.read_json_file(Path('/home/rajiv/temp_/vuls.json'))
         results = {}
         for file_to_look_for in files_to_look_for:
             results[file_to_look_for] = False
+        output_data = utils.read_json_file(self.get_ext_output_dir_for_input_dir(test_input_directory).joinpath('vuls.json'))
+        #output_data = utils.read_json_file(Path('/home/rajiv/temp_/vuls.json'))
         for vulnerability in output_data.get('vulnerabilities'):
             if vulnerability.get('sink_trigger_word') == 'eval(':
                 for file_to_look_for in files_to_look_for:
