@@ -29,6 +29,9 @@ class PytHarness(Harness):
         copy(self.get_raw_output_dir_for_input_dir(directory).joinpath('non_exec_metrics.txt').absolute().__str__(), 
         self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())
 
+    def record_results(self, test_input_directory):
+        files_to_look_for = self.get_test_files_for_result_evaluation(test_directory)
+
 if __name__== '__main__':
     tool_harness_instance = PytHarness()
     test_directory = Path('tests/synthetic_tests/if_statement_1')
@@ -36,4 +39,4 @@ if __name__== '__main__':
     tool_harness_instance.make_output_directories(test_directory)
     tool_harness_instance.run_tool_on_directory(test_directory)
     tool_harness_instance.move_results(test_directory)
-    tool_harness_instance.get_test_files_for_result_evaluation(test_directory)
+    tool_harness_instance.record_results(test_input_directory)

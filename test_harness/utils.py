@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+import json
+import csv
 
 SNYK_RESULT_FILE = "snyk-result.json"
 DIRECTORY_PATH_FOR_TESTS = "tests/"
@@ -26,3 +28,18 @@ def write_to_file(file_name:str, data_to_write:str):
     # The actual write
     result_file = open(file_name, "w+")
     result_file.write(data_to_write)
+
+def read_json_file(file_location:Path):
+    with file_location.open() as opened_file:
+        json_data = json.load(opened_file)
+    return json_data
+
+def read_csv_file(file_location:Path):
+    with file_location.open() as opened_file:
+        csv_file = csv.reader(opened_file)
+        csv_data = [line for line in csv_file]
+    return csv_data
+
+if __name__ == '__main__':
+    read_csv_file(Path('/home/rajiv/temp_/issues.csv'))
+    read_json_file(Path('/home/rajiv/temp_/vuls.json'))
