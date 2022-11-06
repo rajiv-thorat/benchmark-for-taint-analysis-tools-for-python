@@ -3,7 +3,6 @@ from pathlib import Path
 import json
 import csv
 
-SNYK_RESULT_FILE = "snyk-result.json"
 DIRECTORY_PATH_FOR_TESTS = "tests/"
 DIRECTORY_PATH_FOR_OUTPUT = "output/"
 DIRECTORY_PATH_FOR_OUTPUTS = {'codeql':'test_metadata/output_extracted/codeql', 'pysa':'test_metadata/output_extracted/pysa', 'snyk':'test_metadata/output_extracted/snyk'}
@@ -39,6 +38,12 @@ def read_csv_file(file_location:Path):
         csv_file = csv.reader(opened_file)
         csv_data = [line for line in csv_file]
     return csv_data
+
+def write_to_csv_file(file_location:Path, row):
+    file_location.touch(exist_ok=True)
+    with file_location.open('a') as opened_file:
+        csv_writer = csv.writer(opened_file)
+        csv_writer.writerow(row)
 
 if __name__ == '__main__':
     read_csv_file(Path('/home/rajiv/temp_/issues.csv'))

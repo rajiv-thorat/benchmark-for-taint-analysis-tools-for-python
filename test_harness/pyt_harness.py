@@ -23,20 +23,33 @@ class PytHarness(Harness):
         except:
             logging.error(f"The subprocess returned {command_output.returncode} code. There was a problem running the Pysa docker image.")
 
-    def move_results(self):
-        copy(self.get_raw_output_dir_for_input_dir(directory).joinpath('vuls.json').absolute().__str__(), 
-        self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())
-        copy(self.get_raw_output_dir_for_input_dir(directory).joinpath('non_exec_metrics.txt').absolute().__str__(), 
-        self.get_ext_output_dir_for_input_dir(directory).absolute().__str__())
+    def move_results(self, test_input_directory):
+        copy(self.get_raw_output_dir_for_input_dir(test_input_directory).joinpath('vuls.json').absolute().__str__(), 
+        self.get_ext_output_dir_for_input_dir(test_input_directory).absolute().__str__())
+        copy(self.get_raw_output_dir_for_input_dir(test_input_directory).joinpath('non_exec_metrics.txt').absolute().__str__(), 
+        self.get_ext_output_dir_for_input_dir(test_input_directory).absolute().__str__())
 
     def record_results(self, test_input_directory):
         files_to_look_for = self.get_test_files_for_result_evaluation(test_directory)
+        #output_data = utils.read_json_file(self.get_ext_output_dir_for_input_dir(test_input_directory).joinpath('vuls.json'))
+        output_data = utils.read_json_file(Path('/home/rajiv/temp_/vuls.json'))
+        results = {}
+        for file_to_look_for in files_to_look_for:
+            results[file_to_look_for] = False
+        for vulnerability in output_data.get('vulnerabilities'):
+            if vulnerability.get('sink_trigger_word') == 'eval(':
+                for file_to_look_for in files_to_look_for:
+                    if file_to_look_for in vulnerability.get('sink').get('path'):
+                        results[file_to_look_for] = True
+                        
+        for result_key in results.keys():
+            utils.write_to_csv_file(Path(f'{self.get_harness_type()}-result.csv'), [result_key, results.get(result_key)])
 
 if __name__== '__main__':
     tool_harness_instance = PytHarness()
     test_directory = Path('tests/synthetic_tests/if_statement_1')
     logging.info(f'Running {tool_harness_instance.get_harness_type()} on test {test_directory.name}.')
-    tool_harness_instance.make_output_directories(test_directory)
+    """ tool_harness_instance.make_output_directories(test_directory)
     tool_harness_instance.run_tool_on_directory(test_directory)
-    tool_harness_instance.move_results(test_directory)
-    tool_harness_instance.record_results(test_input_directory)
+    tool_harness_instance.move_results(test_directory) """
+    tool_harness_instance.record_results(test_directory)
