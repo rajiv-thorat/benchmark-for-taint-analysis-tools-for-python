@@ -1,1 +1,0 @@
-"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on [[""a user-provided value""|""relative:///array_copy_1_actual.py:8:15:8:21""]].","/array_copy_1_actual.py","12","10","12","19"
