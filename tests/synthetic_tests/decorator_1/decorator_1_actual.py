@@ -7,12 +7,12 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+def tainted_decorator(funct):
+    command = func(*args, **kwargs)
+    eval(command)
+    
 @tainted_decorator
 @app.route("/decorator_route")
 def decorator_route() -> None:
     command = request.view_args.get('command')
     return command
-
-def tainted_decorator(funct):
-    command = func(*args, **kwargs)
-    eval(command)

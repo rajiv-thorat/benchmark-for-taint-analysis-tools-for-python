@@ -7,12 +7,6 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-@TaintedDecorator
-@app.route("/decorator_route")
-def decorator_route() -> None:
-    command = request.view_args.get('command')
-    return command
-
 class TaintedDecorator:
     def __init__(self, func):
         self.function = func
@@ -20,3 +14,9 @@ class TaintedDecorator:
     def __call__(self, *args, **kwargs):
         command = self.function(*args, **kwargs)
         eval(command)
+
+@TaintedDecorator
+@app.route("/decorator_route")
+def decorator_route() -> None:
+    command = request.view_args.get('command')
+    return command

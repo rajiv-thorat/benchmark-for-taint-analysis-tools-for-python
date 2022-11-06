@@ -7,7 +7,7 @@
                 "statement": "command = request.view_args.get('command)",
                 "methodName": "decorator_route()",
                 "className": "",
-                "lineNo": 13,
+                "lineNo": 17,
                 "targetName": "get",
                 "targetNo": 1
             },
@@ -15,7 +15,7 @@
                 "statement": "eval(command)",
                 "methodName": "tainted_decorator()",
                 "className": "",
-                "lineNo": 18,
+                "lineNo": 12,
                 "targetName": "eval",
                 "targetNo": 1
             },
