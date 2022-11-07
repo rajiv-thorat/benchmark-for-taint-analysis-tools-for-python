@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 from flask import Flask, request
-from random import randint
+from class_a import ClassA
 
 app = Flask(__name__)
 
-@app.route("/if_route")
-def if_route() -> None:
+@app.route("/object_route")
+def object_route() -> None:
     command = request.view_args.get('operator')
-    i = randint(1, 0)
-    if i > 0:
-        # The sink is inside a branch
-        eval(command)
+    instance_1 = ClassA()
+    instance_1.command = command
+
+    command = 'list'
+    instance_1.command = 'ls'
+    
+    eval(command)
+    eval(instance_1.command)

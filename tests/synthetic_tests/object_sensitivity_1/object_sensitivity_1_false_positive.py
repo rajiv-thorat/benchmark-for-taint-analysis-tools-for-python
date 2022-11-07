@@ -12,4 +12,4 @@ def object_route() -> None:
 
     instance_1.set_command(command)
     instance_2.set_command('list')
-    eval(instance_1.get_command)
+    eval(instance_2.get_command)
