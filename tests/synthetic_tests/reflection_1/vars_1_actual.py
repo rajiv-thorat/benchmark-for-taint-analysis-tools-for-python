@@ -8,8 +8,8 @@ class ClassA:
 
 @app.route("/reflection_route")
 def reflection_route() -> None:
-    command = request.view_args.get('command')
+    command = request.view_args.get('command') #source
     instance_a = ClassA()
     instance_a.command = command
-    eval(vars(instance_a).get('command'))
+    eval(vars(instance_a).get('command')) #sink
     

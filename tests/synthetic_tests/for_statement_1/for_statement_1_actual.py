@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 @app.route("/for_route")
 def for_route() -> None:
-    command = request.view_args.get('operator')
+    command = request.view_args.get('command') #source
     random_number = randint(1,20)
     for i in range(random_number):
         # The sink is inside a loop.
-        eval(command)
+        eval(command) # sink

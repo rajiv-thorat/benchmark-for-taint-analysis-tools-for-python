@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/if_route")
 def if_route() -> None:
-    command = request.view_args.get('command')
+    command = request.view_args.get('command') #source
     if False:
-        # This is dead code and a candidate for a false positive.
-        eval(command)
+        # This is dead code.
+        eval(command) #sink, false positive

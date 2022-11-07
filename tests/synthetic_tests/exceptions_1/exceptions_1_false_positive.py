@@ -8,7 +8,7 @@ def exception_route() -> None:
     command = ''
     try:
         raise RuntimeError()
-        command = request.view_args.get('operator')
+        command = request.view_args.get('command') #source
     except:
         # The exception is raised before the taint is assigned to the field. This is a false positive candidate.
-        eval(command)
+        eval(command) #sink, false positive

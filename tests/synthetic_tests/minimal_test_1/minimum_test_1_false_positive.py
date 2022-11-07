@@ -6,5 +6,5 @@ app = Flask(__name__)
 @app.route("/minimal_route")
 def minimal_route() -> None:
     command = 'list'
-    eval(command)
-    command = request.view_args.get('command')
+    eval(command) #sink, false positive
+    command = request.view_args.get('command') #source

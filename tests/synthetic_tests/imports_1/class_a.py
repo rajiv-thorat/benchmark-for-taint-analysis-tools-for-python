@@ -1,3 +1,3 @@
 class ClassA:
     def evaluate(self, command):
-        eval(command)
+        eval(command) # sink

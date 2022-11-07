@@ -23,7 +23,7 @@ def factory(class_name: str):
 
 @app.route("/factory_route")
 def factory_route() -> None:
-    command = request.view_args.get('command')
+    command = request.view_args.get('command') #source
     a = factory("ClassA")
     a.set_command(command)
-    eval(a.get_command_sanitized())
+    eval(a.get_command_sanitized()) # sink, false positive

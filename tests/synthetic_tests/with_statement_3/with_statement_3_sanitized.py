@@ -18,11 +18,11 @@ class WithStatement:
 
 @app.route("/with_route")
 def with_route() -> None:
-    command = request.view_args.get('operator')
+    command = request.view_args.get('command') #source
     with WithStatement(command) as instance:
         instance.print_len()
-        # The sink is inside the with scope, and sanitized. This is a candidate for a false positive
-        eval(sanitize(command))
+        # The sink is inside the with scope, and sanitized.
+        eval(sanitize(command)) #sink, false positive
 
 def sanitize(command: str) -> str:
     valid_commands = { 'list' : 'ls', 'stats': 'stat'}

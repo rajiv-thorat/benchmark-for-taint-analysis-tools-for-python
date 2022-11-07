@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/for_route")
 def for_route() -> None:
-    command = request.view_args.get('operator')
+    command = request.view_args.get('command') #source
     for i in []:
-        # The sink is inside dead code. Candidate for false positive.
-        eval(command)
+        # The sink is inside dead code.
+        eval(command) #sink, false positive

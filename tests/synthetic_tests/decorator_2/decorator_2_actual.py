@@ -13,10 +13,10 @@ class TaintedDecorator:
 
     def __call__(self, *args, **kwargs):
         command = self.function(*args, **kwargs)
-        eval(command)
+        eval(command) # sink
 
 @TaintedDecorator
 @app.route("/decorator_route")
 def decorator_route() -> None:
-    command = request.view_args.get('command')
+    command = request.view_args.get('command') #source
     return command

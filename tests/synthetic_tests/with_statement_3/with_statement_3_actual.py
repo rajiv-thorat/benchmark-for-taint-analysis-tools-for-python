@@ -17,9 +17,9 @@ class WithStatement:
         print("Entered the print_len method")
 
 @app.route("/with_route")
-def while_route() -> None:
-    command = request.view_args.get('operator')
+def with_route() -> None:
+    command = request.view_args.get('command') #source
     with WithStatement(command) as instance:
         instance.print_len()
         # The sink is inside the with scope.
-        eval(command)
+        eval(command) #sink

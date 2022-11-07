@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/minimal_route")
 def minimal_route() -> None:
-    command = request.view_args.get('command')
+    command = request.view_args.get('command') #source
     char = Character(command)
 
 class Character:

@@ -6,12 +6,12 @@ app = Flask(__name__)
 
 @app.route("/object_route")
 def object_route() -> None:
-    command = request.view_args.get('operator')
+    command = request.view_args.get('command') #source
     instance_1 = ClassA()
     instance_1.command = command
 
     command = 'list'
     instance_1.command = 'ls'
     
-    eval(command)
-    eval(instance_1.command)
+    eval(command) # sink
+    eval(instance_1.command) # sink

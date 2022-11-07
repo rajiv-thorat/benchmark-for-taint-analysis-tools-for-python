@@ -22,5 +22,5 @@ def aliasing_route() -> None:
         y = q
 
     x.a_instance = y
-    q.random_data = request.view_args.get('operator')
-    eval(a.a_instance.random_data)
+    q.random_data = request.view_args.get('command') #source
+    eval(a.a_instance.random_data) # sink

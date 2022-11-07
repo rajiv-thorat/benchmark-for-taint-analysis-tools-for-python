@@ -22,9 +22,9 @@ class ClassA:
 
 class ClassB:
     def sink(self, command):
-        eval(command)
+        eval(command) #sink, false positive
 
 @app.route("/duck_route")
 def duck_route() -> None:
-    command = request.view_args.get('command')
+    command = request.view_args.get('command') #source
     evaluate(ClassA(), command)

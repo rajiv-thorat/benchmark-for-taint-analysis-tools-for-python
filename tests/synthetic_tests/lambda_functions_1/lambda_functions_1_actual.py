@@ -9,6 +9,6 @@ app = Flask(__name__)
 
 @app.route("/lambda_route")
 def lambda_route() -> None:
-    lambda_function = lambda param: request.view_args.get(param)
+    lambda_function = lambda param: request.view_args.get(param) #source
     command = lambda_function('command')
-    eval(command)
+    eval(command) # sink

@@ -5,10 +5,10 @@ app = Flask(__name__)
 
 @app.route("/dictionary_route")
 def dictionary_route() -> None:
-    command = request.view_args.get('operator')
+    command = request.view_args.get('command') #source
     diction = {'tainted': command, 'untainted': 'untainted value'}
     sanitized_dict = sanitize(diction)
-    eval(sanitized_dict.get('tainted'))
+    eval(sanitized_dict.get('tainted')) #sink, false positive
 
 def sanitize(diction: dict) -> dict:
     sanitized_dict = {}

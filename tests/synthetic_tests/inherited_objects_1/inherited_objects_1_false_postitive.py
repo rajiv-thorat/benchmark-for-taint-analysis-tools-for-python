@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/inheritance_route")
 def inheritance_route() -> None:
-    command = request.view_args.get('operator')
+    command = request.view_args.get('command') #source
     instance = SubClassA(command)
     instance = SubClassB('list')
-    eval(instance.get_command())
+    eval(instance.get_command()) #sink, false positive

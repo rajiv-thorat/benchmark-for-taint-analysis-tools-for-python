@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route("/if_route")
 def if_route() -> None:
-    command = request.view_args.get('command')
+    command = request.view_args.get('command') #source
     if True:
         # The sink is inside a branch
-        eval(command)
+        eval(command) # sink

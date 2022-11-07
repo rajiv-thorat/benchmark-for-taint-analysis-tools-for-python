@@ -9,10 +9,10 @@ app = Flask(__name__)
 
 def tainted_decorator(funct):
     command = func(*args, **kwargs)
-    eval(command)
+    eval(command) # sink
     
 @tainted_decorator
 @app.route("/decorator_route")
 def decorator_route() -> None:
-    command = request.view_args.get('command')
+    command = request.view_args.get('command') #source
     return command

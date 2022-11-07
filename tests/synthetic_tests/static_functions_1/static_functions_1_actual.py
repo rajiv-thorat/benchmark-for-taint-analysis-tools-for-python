@@ -6,9 +6,9 @@ app = Flask(__name__)
 class ClassA:
     @staticmethod
     def evaluate(self, command):
-        eval(command)
+        eval(command) #sink
 
-@app.route("/minimal_route")
-def minimal_route() -> None:
-    command = request.view_args.get('command')
+@app.route("/static_route")
+def static_route() -> None:
+    command = request.view_args.get('command') #source
     ClassA.evaluate(command)

@@ -12,15 +12,15 @@ class WithStatement:
   
     def __exit__(self, exception_type, exception_value, traceback):
         # The sink is inside the overriden __exit__ function
-        eval(self.command)
+        eval(self.command) #sink, false positive
     
     def print_len(self):
         print(self.command)
 
 @app.route("/with_route")
 def while_route() -> None:
-    command = request.view_args.get('operator')
-    # The tainted value was sanitized before passing on to the class. Candidate for a false positive.
+    command = request.view_args.get('command') #source
+    # The tainted value was sanitized before passing on to the class.
     with WithStatement(sanitize(command)) as instance:
         instance.print_len()
     

@@ -7,8 +7,8 @@ app = Flask(__name__)
 def exception_route() -> None:
     command = ''
     try:
-        command = request.view_args.get('operator')
+        command = request.view_args.get('command') #source
         raise RuntimeError()
     except:
         # The sink is after the exception has been caught.
-        eval(command)
+        eval(command) # sink

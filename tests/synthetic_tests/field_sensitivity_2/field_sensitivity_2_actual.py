@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 @app.route("/field_sensitivity_route")
 def field_sensitivity_route() -> None:
-    command = request.view_args.get('operator')
+    command = request.view_args.get('command') #source
     char = Character()
     char.set_name = 'name'
     char.set_path(command)
-    eval(char.get_path())   
+    eval(char.get_path())    # sink

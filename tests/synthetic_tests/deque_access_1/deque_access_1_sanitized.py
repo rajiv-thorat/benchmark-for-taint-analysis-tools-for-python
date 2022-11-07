@@ -6,13 +6,13 @@ app = Flask(__name__)
 
 @app.route("/deque_route")
 def deque_route() -> None:
-    command = request.view_args.get('operator')
+    command = request.view_args.get('command') #source
     deque_instance = deque()
     deque_instance.append(command)
     deque_instance.append('list')
     deque_instance.append('stats')
     san_linked_list = sanitize(deque_instance)
-    eval(san_linked_list.popleft())
+    eval(san_linked_list.popleft()) #sink, false positive
 
 def sanitize(linked_list: deque) -> deque:
     sanitized_deque_instance = deque()

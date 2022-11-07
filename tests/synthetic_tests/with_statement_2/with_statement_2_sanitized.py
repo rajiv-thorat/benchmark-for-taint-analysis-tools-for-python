@@ -16,12 +16,12 @@ class WithStatement:
     def print_len(self):
         print(self.command)
         # The sink is inside the called function
-        eval(self.command)
+        eval(self.command) #sink, false positive
 
 @app.route("/with_route")
 def with_route() -> None:
-    command = request.view_args.get('operator')
-    # The tainted value was sanitized before passing on to the class. Candidate for a false positive.
+    command = request.view_args.get('command') #source
+    # The tainted value was sanitized before passing on to the class.
     with WithStatement(sanitize(command)) as instance:
         # The sink is inside a loop.
         instance.print_len()

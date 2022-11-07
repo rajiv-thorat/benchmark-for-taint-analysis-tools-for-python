@@ -16,11 +16,11 @@ class WithStatement:
     def print_len(self):
         print(self.command)
         # The sink is inside the called function
-        eval(self.command)
+        eval(self.command) #sink
 
 @app.route("/with_route")
 def with_route() -> None:
-    command = request.view_args.get('operator')
+    command = request.view_args.get('command') #source
     with WithStatement(command) as instance:
         # The sink is inside a loop.
         instance.print_len()
