@@ -39,7 +39,7 @@ class PysaHarness(Harness):
         self.get_ext_output_dir_for_input_dir(test_input_directory).absolute().__str__())
 
     def record_results(self, test_input_directory):
-        files_to_look_for = self.get_test_files_for_result_evaluation(test_directory)
+        files_to_look_for = utils.get_test_files_for_result_evaluation(test_directory)
         results = {}
         for file_to_look_for in files_to_look_for:
             results[file_to_look_for] = False

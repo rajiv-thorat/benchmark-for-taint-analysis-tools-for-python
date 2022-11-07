@@ -45,6 +45,10 @@ def write_to_csv_file(file_location:Path, row):
         csv_writer = csv.writer(opened_file)
         csv_writer.writerow(row)
 
+def get_test_files_for_result_evaluation(directory:Path):
+    taf_files = list(DIRECTORY_FOR_TEST_META_DATA.joinpath(directory.name).glob('*_taf.json'))
+    return [test_file.name[:len(test_file.name) - 9] for test_file in taf_files]
+
 if __name__ == '__main__':
     read_csv_file(Path('/home/rajiv/temp_/issues.csv'))
     read_json_file(Path('/home/rajiv/temp_/vuls.json'))

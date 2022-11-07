@@ -38,8 +38,3 @@ class Harness(ABC):
     """ @abc.abstractmethod
     def compare_results(self):
         ... """
-
-    def get_test_files_for_result_evaluation(self, directory:Path):
-        logging.info('Reading the TAF files.')
-        taf_files = list(utils.DIRECTORY_FOR_TEST_META_DATA.joinpath(directory.name).glob('*_taf.json'))
-        return [test_file.name[:len(test_file.name) - 9] for test_file in taf_files]
