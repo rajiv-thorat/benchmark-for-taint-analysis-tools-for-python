@@ -10,6 +10,6 @@ def field_sensitivity_route() -> None:
     char = Character()
     char.set_name = 'name'
     char.set_path('')
-    eval(char.get_path())   
+    eval(char.get_path())   #sink
     # The taint is set after the possible sink is called. This is a false positive candidate.
     char.set_path(command)
