@@ -32,23 +32,25 @@ class SnykHarness(Harness):
 
     def move_results(self, test_input_directory:Path):
         logging.info(f'Caching the results at {self.get_raw_output_dir_for_input_dir(test_input_directory).__str__()}.')
-        copy(self.get_raw_output_dir_for_input_dir(test_input_directory).joinpath('issues.json').absolute().__str__(), 
-        self.get_ext_output_dir_for_input_dir(test_input_directory).absolute().__str__())
+        if self.get_raw_output_dir_for_input_dir(test_input_directory).joinpath('issues.json').exists():
+            copy(self.get_raw_output_dir_for_input_dir(test_input_directory).joinpath('issues.json').absolute().__str__(), 
+            self.get_ext_output_dir_for_input_dir(test_input_directory).absolute().__str__())
         copy(self.get_raw_output_dir_for_input_dir(test_input_directory).joinpath('non_exec_metrics.txt').absolute().__str__(), 
         self.get_ext_output_dir_for_input_dir(test_input_directory).absolute().__str__())
 
     def record_results(self, test_input_directory):
-        files_to_look_for = utils.get_test_files_for_result_evaluation(test_directory)
+        files_to_look_for = utils.get_test_files_for_result_evaluation(test_input_directory)
         results = {}
         for file_to_look_for in files_to_look_for:
             results[file_to_look_for] = False
         #output_data = utils.read_json_file(Path('/home/rajiv/temp_/issues.json'))
-        output_data = utils.read_json_file(self.get_ext_output_dir_for_input_dir(test_input_directory).joinpath('issues.json'))
-        for vulnerability in output_data.get('runs')[0].get('results'):
-            if vulnerability.get('ruleId') == 'python/CodeInjection':
-                for file_to_look_for in files_to_look_for:
-                    if file_to_look_for in vulnerability.get('locations')[0].get('physicalLocation').get('artifactLocation').get('uri'):
-                        results[file_to_look_for] = True
+        if self.get_ext_output_dir_for_input_dir(test_input_directory).joinpath('issues.json').exists():
+            output_data = utils.read_json_file(self.get_ext_output_dir_for_input_dir(test_input_directory).joinpath('issues.json'))
+            for vulnerability in output_data.get('runs')[0].get('results'):
+                if vulnerability.get('ruleId') == 'python/CodeInjection':
+                    for file_to_look_for in files_to_look_for:
+                        if file_to_look_for in vulnerability.get('locations')[0].get('physicalLocation').get('artifactLocation').get('uri'):
+                            results[file_to_look_for] = True
 
         logging.info('Recording the results.')
         for result_key in results.keys():
