@@ -17,7 +17,7 @@ class Harness(ABC):
        ... 
 
     @abc.abstractmethod
-    def move_results(self):
+    def move_results(self, test_input_directory:Path):
         ...
 
     def make_output_directories(self, test_input_direcory:Path):
