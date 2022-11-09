@@ -35,11 +35,14 @@ class PytHarness(Harness):
         self.get_ext_output_dir_for_input_dir(test_input_directory).absolute().__str__())
 
     def record_results(self, test_input_directory):
-        files_to_look_for = utils.get_test_files_for_result_evaluation(test_directory)
+        files_to_look_for = utils.get_test_files_for_result_evaluation(test_input_directory)
         results = {}
         for file_to_look_for in files_to_look_for:
             results[file_to_look_for] = False
-        output_data = utils.read_json_file(self.get_ext_output_dir_for_input_dir(test_input_directory).joinpath('vuls.json'))
+        if self.get_ext_output_dir_for_input_dir(test_input_directory).joinpath('vuls.json').stat().st_size == 0:
+            output_data = {'vulnerabilities': []}
+        else:
+            output_data = utils.read_json_file(self.get_ext_output_dir_for_input_dir(test_input_directory).joinpath('vuls.json'))
         #output_data = utils.read_json_file(Path('/home/rajiv/temp_/vuls.json'))
         for vulnerability in output_data.get('vulnerabilities'):
             if vulnerability.get('sink_trigger_word') == 'eval(':
@@ -53,7 +56,7 @@ class PytHarness(Harness):
 
 if __name__== '__main__':
     tool_harness_instance = PytHarness()
-    test_directory = Path('tests/synthetic_tests/if_statement_1')
+    test_directory = Path('tests/synthetic_tests/for_statement_1')
     logging.info(f'Running {tool_harness_instance.get_harness_type()} on test {test_directory.name}.')
     tool_harness_instance.make_output_directories(test_directory)
     tool_harness_instance.run_tool_on_directory(test_directory)
