@@ -2,6 +2,7 @@ import utils
 from numpy import average
 from csv import writer
 import logging
+from harness import Harness
 
 class NonExecMetricsCollector:
     def collect(self):
@@ -35,7 +36,7 @@ class NonExecMetricsCollector:
                 [int(n) for n in str(total_metrics_for_test['max_mem_usage_in_kb'])[1:].split(',')])
                 
                 summary.get(test_op_dir.name).append({
-                    tool_name : total_metrics_for_test
+                    tool_harness_instance.get_harness_type() : total_metrics_for_test
                 })
 
         self.write_summary_to_csv(summary)
@@ -77,16 +78,16 @@ class NonExecMetricsCollector:
                 second_line = lines[1]
             line_leftover = first_line.split('user')
             # Rounding off the decimals
-            user_space_time_in_sec = int(float(line_leftover[0].strip()))
+            user_space_time_in_sec = float(line_leftover[0].strip())
             line_leftover = line_leftover[1].split('system')
             # Rounding off the decimals
-            system_space_time_in_sec = int(float(line_leftover[0].strip()))
+            system_space_time_in_sec = float(line_leftover[0].strip())
             line_leftover = line_leftover[1].split('elapsed')
             elapsed_time_split = line_leftover[0].strip().split(':')
             elapsed_time_mins = elapsed_time_split[0]
             elapsed_time_secs = elapsed_time_split[1]
             # Rounding off the decimals
-            total_elapsed_time_in_sec = int(float(elapsed_time_mins)) * 60 + int(float(elapsed_time_secs))
+            total_elapsed_time_in_sec = float(elapsed_time_mins) * 60 + float(elapsed_time_secs)
             line_leftover = line_leftover[1].split('maxresident)k')
             line_leftover = line_leftover[0].split(' ')
             max_mem_usage_in_kb = int(line_leftover[line_leftover.__len__() - 1])
