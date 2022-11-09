@@ -42,7 +42,7 @@ class CodeQLHarness(Harness):
             self.get_ext_output_dir_for_input_dir(test_input_directory).absolute().__str__())
 
     def record_results(self, test_input_directory):
-        files_to_look_for = utils.get_test_files_for_result_evaluation(test_directory)
+        files_to_look_for = utils.get_test_files_for_result_evaluation(test_input_directory)
         results = {}
         for file_to_look_for in files_to_look_for:
             results[file_to_look_for] = False
@@ -71,9 +71,10 @@ class CodeQLHarness(Harness):
 
 if __name__== '__main__':
     tool_harness_instance = CodeQLHarness()
-    test_directory = Path('tests/synthetic_tests/if_statement_1')
-    logging.info(f'Running {tool_harness_instance.get_harness_type()} on test {test_directory.name}.')
-    tool_harness_instance.make_output_directories(test_directory)
-    tool_harness_instance.run_tool_on_directory(test_directory)
-    tool_harness_instance.move_results(test_directory)
-    tool_harness_instance.record_results(test_directory)
+    #test_directory = Path('tests/synthetic_tests/if_statement_1')
+    for test_directory in [x for x in utils.DIRECTORY_PATH_FOR_SYNTHETIC_TAINT_DATA.iterdir() if x.is_dir() and (x.name != 'experiments' or x.name != 'match_statement_1')]:
+        logging.info(f'Running {tool_harness_instance.get_harness_type()} on test {test_directory.name}.')
+        tool_harness_instance.make_output_directories(test_directory)
+        tool_harness_instance.run_tool_on_directory(test_directory)
+        tool_harness_instance.move_results(test_directory)
+        tool_harness_instance.record_results(test_directory)
