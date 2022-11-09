@@ -1,0 +1,74 @@
+{
+    "generated_at": "2022-11-09T17:55:10Z",
+    "vulnerabilities": [
+        {
+            "source": {
+                "label": "~call_1 = ret_flask.request.view_args.get('command')",
+                "line_number": 21,
+                "path": "/app/with_statement_3_actual.py"
+            },
+            "source_trigger_word": "request.view_args.get(",
+            "sink": {
+                "label": "~call_3 = ret_eval(command)",
+                "line_number": 25,
+                "path": "/app/with_statement_3_actual.py"
+            },
+            "sink_trigger_word": "eval(",
+            "type": "Vulnerability",
+            "reassignment_nodes": [
+                {
+                    "label": "command = ~call_1",
+                    "line_number": 21,
+                    "path": "/app/with_statement_3_actual.py"
+                }
+            ]
+        },
+        {
+            "source": {
+                "label": "~call_1 = ret_flask.request.view_args.get('command')",
+                "line_number": 21,
+                "path": "/app/with_statement_3_sanitized.py"
+            },
+            "source_trigger_word": "request.view_args.get(",
+            "sink": {
+                "label": "~call_3 = ret_eval(~call_4)",
+                "line_number": 25,
+                "path": "/app/with_statement_3_sanitized.py"
+            },
+            "sink_trigger_word": "eval(",
+            "type": "Vulnerability",
+            "reassignment_nodes": [
+                {
+                    "label": "command = ~call_1",
+                    "line_number": 21,
+                    "path": "/app/with_statement_3_sanitized.py"
+                },
+                {
+                    "label": "save_4_command = command",
+                    "line_number": 27,
+                    "path": "/app/with_statement_3_sanitized.py"
+                },
+                {
+                    "label": "temp_4_command = command",
+                    "line_number": 25,
+                    "path": "/app/with_statement_3_sanitized.py"
+                },
+                {
+                    "label": "command = temp_4_command",
+                    "line_number": 27,
+                    "path": "/app/with_statement_3_sanitized.py"
+                },
+                {
+                    "label": "ret_sanitize = valid_commands[command]",
+                    "line_number": 29,
+                    "path": "/app/with_statement_3_sanitized.py"
+                },
+                {
+                    "label": "~call_4 = ret_sanitize",
+                    "line_number": 25,
+                    "path": "/app/with_statement_3_sanitized.py"
+                }
+            ]
+        }
+    ]
+}

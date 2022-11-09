@@ -1,0 +1,334 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "python/XSS",
+              "name": "XSS",
+              "shortDescription": {
+                "text": "Cross-site Scripting (XSS)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser's Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they've been correctly escaped in the application code and in this way the attempted attack is diverted.\n\nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware.\n\n### Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user's browser.|\n|**DOM-based**|Client|The attacker forces the user's browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n### Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n### How to prevent\nThis section describes the top best practices designed to specifically protect your code:\n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches.\n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents.\n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "python"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/googleapis/oauth2client/commit/1c56925cbc83b9dd8a5112a60e62e0aa73a33b5f?diff=split#diff-e4d128b4bf6c347d924bafe9df665fc2L96",
+                    "lines": [
+                      {
+                        "line": "def oauth2_callback(request):",
+                        "lineNumber": 96,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    \"\"\" View that handles the user's return from OAuth2 provider.",
+                        "lineNumber": 97,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "     A redirect response back to the return_url.",
+                        "lineNumber": 108,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\"\"\"",
+                        "lineNumber": 109,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if 'error' in request.GET:",
+                        "lineNumber": 110,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    reason = request.GET.get(",
+                        "lineNumber": 111,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        'error_description', request.GET.get('error', ''))",
+                        "lineNumber": 112,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    reason = html.escape(reason)",
+                        "lineNumber": 113,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return http.HttpResponseBadRequest(",
+                        "lineNumber": 114,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        'Authorization failed {0}'.format(reason))",
+                        "lineNumber": 115,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "try:",
+                        "lineNumber": 117,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    encoded_state = request.GET['state']",
+                        "lineNumber": 118,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    code = request.GET['code']",
+                        "lineNumber": 119,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "except KeyError:",
+                        "lineNumber": 120,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return http.HttpResponseBadRequest(",
+                        "lineNumber": 121,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/miguelgrinberg/flasky-first-edition/commit/57f3cb9449c3f8f45454059340c2934fbda33593?diff=split#diff-8d35108ffe2ad173a697734a3e9938e1L15",
+                    "lines": [
+                      {
+                        "line": "@app.route('/user/<name>')",
+                        "lineNumber": 14,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "def user(name):",
+                        "lineNumber": 15,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return '<h1>Hello, %s!</h1>' % name",
+                        "lineNumber": 16,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return render_template('user.html', name=name)",
+                        "lineNumber": 16,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/miguelgrinberg/flasky/commit/e55fc2f5f6eba0c73bcdc3fa5c1608d9643a7340?diff=split#diff-8d35108ffe2ad173a697734a3e9938e1L15",
+                    "lines": [
+                      {
+                        "line": "@app.route('/user/<name>')",
+                        "lineNumber": 14,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "def user(name):",
+                        "lineNumber": 15,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return '<h1>Hello, %s!</h1>' % name",
+                        "lineNumber": 16,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return render_template('user.html', name=name)",
+                        "lineNumber": 16,
+                        "lineChange": "added"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Adding Survey View tests.",
+                  "Support return json data",
+                  "Finish notification API test"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 709,
+                "cwe": [
+                  "CWE-79"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "python/XSS",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into the return value of decorator_route, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3)",
+              "[the return value of decorator_route](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "decorator_1_actual.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 18,
+                  "endLine": 18,
+                  "startColumn": 12,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "28a7f02bb257a1c5ea76b87733cbfe3054cbfeba522e3c400a1ff7397a79f18b",
+            "1": "8a30cfc6.d897eb86.79e62dc9.139c59a8.cc857d4e.ba14daf2.bed03587.d5feecc2.0bb9dd7b.976f7a3f.13aa4cd9.139c59a8.cb2ee61d.ba14daf2.22a8b49e.d5feecc2"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "decorator_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 17,
+                            "endLine": 17,
+                            "startColumn": 15,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "decorator_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 17,
+                            "endLine": 17,
+                            "startColumn": 15,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "decorator_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 17,
+                            "endLine": 17,
+                            "startColumn": 5,
+                            "endColumn": 11
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "decorator_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 12,
+                            "endColumn": 18
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "decorator_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 12,
+                            "endColumn": 18
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 850,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 1,
+            "isSupported": true,
+            "lang": "Python"
+          }
+        ]
+      }
+    }
+  ]
+}

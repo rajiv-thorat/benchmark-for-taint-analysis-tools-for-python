@@ -1,0 +1,4 @@
+"Except block handles 'BaseException'","Handling 'BaseException' means that system exits and keyboard interrupts may be mis-handled.","recommendation","Except block directly handles BaseException.","/exceptions_1_actual.py","12","5","12","11"
+"Except block handles 'BaseException'","Handling 'BaseException' means that system exits and keyboard interrupts may be mis-handled.","recommendation","Except block directly handles BaseException.","/exceptions_1_false_positive.py","12","5","12","11"
+"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on [[""a user-provided value""|""relative:///exceptions_1_actual.py:10:19:10:25""]].","/exceptions_1_actual.py","14","14","14","20"
+"Unreachable code","Code is unreachable","warning","This statement is unreachable.","/exceptions_1_false_positive.py","11","9","11","50"

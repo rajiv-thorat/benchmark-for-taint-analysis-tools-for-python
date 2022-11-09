@@ -1,0 +1,3 @@
+"Except block handles 'BaseException'","Handling 'BaseException' means that system exits and keyboard interrupts may be mis-handled.","recommendation","Except block directly handles BaseException.","/exception_3_false_positive.py","16","5","16","11"
+"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on [[""a user-provided value""|""relative:///exception_3_false_positive.py:12:19:12:25""]].","/exception_3_false_positive.py","18","14","18","20"
+"Unused local variable","Local variable is defined but not used","recommendation","Variable source is not used","/exception_3_false_positive.py","15","13","15","18"

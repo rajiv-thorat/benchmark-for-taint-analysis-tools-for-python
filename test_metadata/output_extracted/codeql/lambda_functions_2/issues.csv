@@ -1,0 +1,2 @@
+"Unnecessary lambda","A lambda is used that calls through to a function without modifying any parameters","recommendation","This 'lambda' is just a simple wrapper around a callable object. Use that object directly.","/lambda_functions_2_actual.py","13","23","13","46"
+"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on [[""a user-provided value""|""relative:///lambda_functions_2_actual.py:12:15:12:21""]].","/lambda_functions_2_actual.py","13","42","13","45"

@@ -1,0 +1,1 @@
+"Wrong number of arguments in a call","Using too many or too few arguments in a call to a function will result in a TypeError at runtime.","error","Call to [[""method ClassA.evaluate""|""relative:///static_functions_1_actual.py:8:5:8:32""]] with too few arguments; should be no fewer than 2.","/static_functions_1_actual.py","14","5","14","28"

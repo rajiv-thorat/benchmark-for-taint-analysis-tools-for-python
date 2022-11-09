@@ -1,0 +1,1 @@
+"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on [[""a user-provided value""|""relative:///recursion_1_actual.py:8:12:8:18""]].","/recursion_1_actual.py","13","14","13","23"

@@ -1,0 +1,32 @@
+{
+    "generated_at": "2022-11-09T17:55:29Z",
+    "vulnerabilities": [
+        {
+            "source": {
+                "label": "~call_1 = ret_flask.request.view_args.get('command')",
+                "line_number": 13,
+                "path": "/app/static_functions_1_actual.py"
+            },
+            "source_trigger_word": "request.view_args.get(",
+            "sink": {
+                "label": "~call_3 = ret_eval(command)",
+                "line_number": 9,
+                "path": "/app/static_functions_1_actual.py"
+            },
+            "sink_trigger_word": "eval(",
+            "type": "Vulnerability",
+            "reassignment_nodes": [
+                {
+                    "label": "command = ~call_1",
+                    "line_number": 13,
+                    "path": "/app/static_functions_1_actual.py"
+                },
+                {
+                    "label": "save_2_command = command",
+                    "line_number": 8,
+                    "path": "/app/static_functions_1_actual.py"
+                }
+            ]
+        }
+    ]
+}

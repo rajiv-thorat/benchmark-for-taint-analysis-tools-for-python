@@ -1,0 +1,6 @@
+"Unused import","Import is not required as it is not used","recommendation","Import of 'random' is not used.","/aliasing_1_actual.py","4","1","4","13"
+"Unused import","Import is not required as it is not used","recommendation","Import of 'random' is not used.","/aliasing_1_false_positive.py","4","1","4","13"
+"Unreachable code","Code is unreachable","warning","This statement is unreachable.","/aliasing_1_actual.py","18","9","18","13"
+"Unreachable code","Code is unreachable","warning","This statement is unreachable.","/aliasing_1_false_positive.py","21","9","21","13"
+"Unused local variable","Local variable is defined but not used","recommendation","Variable b is not used","/aliasing_1_actual.py","14","5","14","5"
+"Unused local variable","Local variable is defined but not used","recommendation","Variable p is not used","/aliasing_1_false_positive.py","12","5","12","5"

@@ -1,0 +1,3 @@
+"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on [[""a user-provided value""|""relative:///minimum_test_1_actual.py:8:15:8:21""]].","/minimum_test_1_actual.py","9","10","9","16"
+"Unused local variable","Local variable is defined but not used","recommendation","Variable command is not used","/minimum_test_1_false_positive.py","10","5","10","11"
+"Unused local variable","Local variable is defined but not used","recommendation","Variable char is not used","/minimum_test_2_actual.py","9","5","9","8"

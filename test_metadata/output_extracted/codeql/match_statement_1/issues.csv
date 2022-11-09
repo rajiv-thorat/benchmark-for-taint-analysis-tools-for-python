@@ -1,0 +1,1 @@
+"File is not always closed","Opening a file without ensuring that it is always closed may cause resource leaks.","warning","File may not be closed if an exception is raised.","/match-statement.py","7","26","7","44"

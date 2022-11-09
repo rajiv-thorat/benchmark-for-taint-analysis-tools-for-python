@@ -1,0 +1,2 @@
+319.04user 12.74system 3:42.58elapsed 149%CPU (0avgtext+0avgdata 3560160maxresident)k
+16792inputs+677656outputs (43941major+1228196minor)pagefaults 0swaps

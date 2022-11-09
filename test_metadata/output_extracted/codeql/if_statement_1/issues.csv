@@ -1,0 +1,4 @@
+"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on [[""a user-provided value""|""relative:///if_statement_1_actual.py:14:15:14:21""]].","/if_statement_1_actual.py","17","14","17","20"
+"Constant in conditional expression or statement","The conditional is always true or always false","warning","Testing a constant will always give the same result.","/if_statement_1_actual.py","15","8","15","11"
+"Unreachable code","Code is unreachable","warning","This statement is unreachable.","/if_statement_1_false_positive.py","16","9","16","21"
+"Unused local variable","Local variable is defined but not used","recommendation","Variable command is not used","/if_statement_1_false_positive.py","13","5","13","11"

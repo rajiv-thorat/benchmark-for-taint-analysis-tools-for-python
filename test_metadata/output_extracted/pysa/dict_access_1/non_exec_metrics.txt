@@ -1,0 +1,2 @@
+193.49user 24.04system 3:37.27elapsed 100%CPU (0avgtext+0avgdata 2663828maxresident)k
+13512inputs+2424outputs (107major+4837057minor)pagefaults 0swaps

@@ -1,0 +1,2 @@
+"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on [[""a user-provided value""|""relative:///getattr_1_actual.py:11:15:11:21""]].","/getattr_1_actual.py","14","10","14","39"
+"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on [[""a user-provided value""|""relative:///setattr_1_actual.py:12:15:12:21""]].","/setattr_1_actual.py","15","10","15","27"

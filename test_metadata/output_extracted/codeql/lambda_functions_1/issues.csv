@@ -1,0 +1,1 @@
+"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on [[""a user-provided value""|""relative:///lambda_functions_1_actual.py:12:37:12:43""]].","/lambda_functions_1_actual.py","14","10","14","16"

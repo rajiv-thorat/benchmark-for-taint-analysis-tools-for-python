@@ -1,0 +1,796 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "python/CodeInjection",
+              "name": "CodeInjection",
+              "shortDescription": {
+                "text": "Code Injection"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nA secure code injection attack occurs when the attacker exploits an existing input processing vulnerability, passing special characters and code directly to a web-based application or site. The code is then executed, potentially granting the user system access to export sensitive data, to install malware, or even to move laterally and to exploit other systems in the trusted internal network environment. While code injection attacks can take place in several ways, the common factor is allowing the user to submit executable code to the application. The most common forms of code injection are SQL injection (server side) and cross-site scripting (XSS) (client side).\n\n### Best practices for prevention\n\n- Never trust user input. Assume any input may transmit harmful values.\n- Apply least privilege principle (for example, limit users to read only wherever possible).\n- Avoid passing raw user input directly to functions; use parameterized queries to extract data first.\n- Sanitize user input strings of special characters such as ?, &, /, <, >, and quotation marks.\n- Use whitelisting of known good values.\n- Validate user input against expected response types.\n- Escape shell commands with functions such as shlex for Python, or escapeshellarg for PHP.\n- Remember that code injection can take place on multiple fronts: GET and POST requests, but also cookies and HTTP headers.\n- Ensure up-to-date patching across all systems to remediate known vulnerabilities so these cannot be exploited by code injection.\n- Educate all team members on safe data handling procedures to prevent attacks.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "python"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/praw-dev/praw/commit/c4c75964c06cfbc613d8b8663fba0f85b99791cb?diff=split#diff-4d74b15d9b9e10adb408c5a530f62c93L319",
+                    "lines": [
+                      {
+                        "line": "                       None, REDDIT_USER_AGENT)",
+                        "lineNumber": 316,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    # Should only need ~1200 chars to get the modhash",
+                        "lineNumber": 317,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    data = self.urlopen(req).read(1200)",
+                        "lineNumber": 318,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    data = self._urlopen(req).read(1200)",
+                        "lineNumber": 318,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    match = re.search(r\"modhash[^,]*\", data)",
+                        "lineNumber": 319,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    # Store the modhash.",
+                        "lineNumber": 320,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    self.modhash = eval(match.group(0).split(\": \")[1])",
+                        "lineNumber": 321,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@require_login",
+                        "lineNumber": 323,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/nkouevda/albumr/commit/e5c4d797645683169706934e93dbc196cc2ca47e?diff=split#diff-e1ed3b055c50bc1f3f374d63bca49536L16",
+                    "lines": [
+                      {
+                        "line": "try:",
+                        "lineNumber": 13,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    # Read and decode the page",
+                        "lineNumber": 14,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    page = urlopen(\"http://imgur.com/a/\" + album).read().decode()",
+                        "lineNumber": 15,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "# Extract the list of images and eval it to a Python list",
+                        "lineNumber": 20,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "images = eval(re.search(r'(?<=\"items\":)\\[\\{.+\\}\\](?=\\})', page).group())",
+                        "lineNumber": 21,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "images = json.loads(re.search(r'(?<=\"items\":)\\[\\{.+\\}\\](?=\\})',",
+                        "lineNumber": 18,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        page).group())",
+                        "lineNumber": 19,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "# Generate a list of images in the album",
+                        "lineNumber": 23,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apache/airflow/commit/c44e2009ee625ce4a82c50e585a3c8617d9b4ff8?diff=split#diff-948e87b4f8f644b3ad8c7950958df033L301",
+                    "lines": [
+                      {
+                        "line": "import pandas as pd",
+                        "lineNumber": 298,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "session = settings.Session()",
+                        "lineNumber": 299,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "chart_id = request.args.get('chart_id')",
+                        "lineNumber": 300,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "csv = request.args.get('csv') == \"true\"",
+                        "lineNumber": 301,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "chart = session.query(models.Chart).filter_by(id=chart_id).first()",
+                        "lineNumber": 302,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "db = session.query(",
+                        "lineNumber": 303,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    models.Connection).filter_by(conn_id=chart.conn_id).first()",
+                        "lineNumber": 304,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "session.expunge_all()",
+                        "lineNumber": 305,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "session.commit()",
+                        "lineNumber": 306,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "# Processing templated fields",
+                        "lineNumber": 313,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "try:",
+                        "lineNumber": 314,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    args = eval(chart.default_params)",
+                        "lineNumber": 315,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    args = ast.literal_eval(chart.default_params)",
+                        "lineNumber": 315,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if type(args) is not type(dict()):",
+                        "lineNumber": 316,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        raise AirflowException('Not a dict')",
+                        "lineNumber": 317,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "* fixes api tests",
+                  "* removes singleton refs in helpers tests",
+                  "* fix pipette tests"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 73,
+                "cwe": [
+                  "CWE-94"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "python/CodeInjection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into eval, where it is executed as Python code. This may result in a Code Injection vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is executed as Python code. This may result in a Code Injection vulnerability.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11)",
+              "[eval](12)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "list_copy_1_false_positive.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 12,
+                  "endLine": 12,
+                  "startColumn": 5,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "dd5a83ed1c31816a0508f2e5452673c34a41ab3aacb0f4e9918bb72005acb1b7",
+            "1": "e06468b8.16c9ccc7.531bdceb.c4c629e2.ce1a2e7d.ba14daf2.244b4e90.ebed174f.e06468b8.5ea78275.559c934d.53fa90f8.ce1a2e7d.73cfdf26.a2237efa.f46ed94e"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 8,
+                            "endLine": 8,
+                            "startColumn": 15,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 8,
+                            "endLine": 8,
+                            "startColumn": 15,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 8,
+                            "endLine": 8,
+                            "startColumn": 5,
+                            "endColumn": 11
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 9,
+                            "endLine": 9,
+                            "startColumn": 29,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 9,
+                            "endLine": 9,
+                            "startColumn": 15,
+                            "endColumn": 36
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 9,
+                            "endLine": 9,
+                            "startColumn": 5,
+                            "endColumn": 11
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "endLine": 10,
+                            "startColumn": 42,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "endLine": 10,
+                            "startColumn": 42,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "endLine": 10,
+                            "startColumn": 15,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "endLine": 10,
+                            "startColumn": 5,
+                            "endColumn": 11
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 12,
+                            "endLine": 12,
+                            "startColumn": 10,
+                            "endColumn": 16
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 11,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 12,
+                            "endLine": 12,
+                            "startColumn": 10,
+                            "endColumn": 19
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 12,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_false_positive.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 12,
+                            "endLine": 12,
+                            "startColumn": 5,
+                            "endColumn": 20
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 850,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "python/CodeInjection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into eval, where it is executed as Python code. This may result in a Code Injection vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is executed as Python code. This may result in a Code Injection vulnerability.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11)",
+              "[eval](12)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "list_copy_1_actual.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 12,
+                  "endLine": 12,
+                  "startColumn": 5,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "57e2cc6d55af2b05f032a215ef849d5ae25616fb5d1abc1385b81b8d0bed7e92",
+            "1": "e06468b8.16c9ccc7.531bdceb.c4c629e2.ce1a2e7d.ba14daf2.244b4e90.ebed174f.e06468b8.5ea78275.559c934d.53fa90f8.ce1a2e7d.73cfdf26.a2237efa.f46ed94e"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 8,
+                            "endLine": 8,
+                            "startColumn": 15,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 8,
+                            "endLine": 8,
+                            "startColumn": 15,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 8,
+                            "endLine": 8,
+                            "startColumn": 5,
+                            "endColumn": 11
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 9,
+                            "endLine": 9,
+                            "startColumn": 29,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 9,
+                            "endLine": 9,
+                            "startColumn": 15,
+                            "endColumn": 36
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 9,
+                            "endLine": 9,
+                            "startColumn": 5,
+                            "endColumn": 11
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "endLine": 10,
+                            "startColumn": 42,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "endLine": 10,
+                            "startColumn": 42,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "endLine": 10,
+                            "startColumn": 15,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 10,
+                            "endLine": 10,
+                            "startColumn": 5,
+                            "endColumn": 11
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 12,
+                            "endLine": 12,
+                            "startColumn": 10,
+                            "endColumn": 16
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 11,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 12,
+                            "endLine": 12,
+                            "startColumn": 10,
+                            "endColumn": 19
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 12,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "list_copy_1_actual.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 12,
+                            "endLine": 12,
+                            "startColumn": 5,
+                            "endColumn": 20
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 850,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 2,
+            "isSupported": true,
+            "lang": "Python"
+          }
+        ]
+      }
+    }
+  ]
+}
