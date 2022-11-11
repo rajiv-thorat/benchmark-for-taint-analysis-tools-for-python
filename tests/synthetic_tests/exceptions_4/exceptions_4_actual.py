@@ -11,4 +11,4 @@ def exception_route() -> None:
         raise RuntimeError(command)
     except RuntimeError as ex:
         # The sink is after the exception has been caught.
-        eval(ex.message) # sink
+        eval(ex.args) # sink

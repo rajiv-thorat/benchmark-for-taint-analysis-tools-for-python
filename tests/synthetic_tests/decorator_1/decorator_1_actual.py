@@ -7,7 +7,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-def tainted_decorator(funct):
+def tainted_decorator(func):
     command = func(*args, **kwargs)
     eval(command) # sink
     
