@@ -1,0 +1,21 @@
+{
+    "generated_at": "2022-11-12T10:48:38Z",
+    "vulnerabilities": [
+        {
+            "source": {
+                "label": "taint_flow = '\n    command = request.view_args.get('command') #source\n    eval(command) # sink\n    '",
+                "line_number": 8,
+                "path": "/app/exec_1_actual.py"
+            },
+            "source_trigger_word": "request.view_args.get(",
+            "sink": {
+                "label": "~call_1 = ret_exec(taint_flow)",
+                "line_number": 12,
+                "path": "/app/exec_1_actual.py"
+            },
+            "sink_trigger_word": "exec(",
+            "type": "Vulnerability",
+            "reassignment_nodes": []
+        }
+    ]
+}
