@@ -1,9 +1,9 @@
 snyk_TP,19
-snyk_FP,11
+snyk_FP,12
 snyk_FN,23
-snyk_precision,0.6333333333333333
+snyk_precision,0.6129032258064516
 snyk_recall,0.4523809523809524
-snyk_f_score,0.5277777777777778
+snyk_f_score,0.5205479452054794
 pysa_TP,21
 pysa_FP,6
 pysa_FN,21
@@ -11,11 +11,11 @@ pysa_precision,0.7777777777777778
 pysa_recall,0.5
 pysa_f_score,0.6086956521739131
 codeql_TP,17
-codeql_FP,4
+codeql_FP,5
 codeql_FN,25
-codeql_precision,0.8095238095238095
+codeql_precision,0.7727272727272727
 codeql_recall,0.40476190476190477
-codeql_f_score,0.5396825396825397
+codeql_f_score,0.5312499999999999
 pyt_TP,11
 pyt_FP,9
 pyt_FN,31

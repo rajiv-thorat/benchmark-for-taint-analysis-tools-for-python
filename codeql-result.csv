@@ -71,4 +71,4 @@ multi_dementional_array_1_actual,False
 exec_1_actual,False
 decorator_1_actual,False
 exceptions_4_actual,False
-exceptions_3_false_positive,False
+exceptions_3_false_positive,True
