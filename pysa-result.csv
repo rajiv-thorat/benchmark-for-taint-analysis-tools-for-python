@@ -19,7 +19,6 @@ list_copy_1_actual,True
 list_copy_1_false_positive,False
 aliasing_1_actual,False
 aliasing_1_false_positive,False
-decorator_1_actual,False
 imports_1_actual,False
 with_statement_3_sanitized,False
 with_statement_3_actual,True
@@ -31,7 +30,6 @@ field_sensitivity_3_false_positive,False
 list_to_string_1_actual,True
 with_statement_1_sanitized,False
 with_statement_1_actual,False
-exceptions_4_actual,False
 field_sensitivity_1_sanitized,False
 field_sensitivity_1_actual,False
 field_sensitivity_1_false_positive,False
@@ -53,7 +51,6 @@ exceptions_2_actual,False
 field_sensitivity_2_sanitized,False
 field_sensitivity_2_false_positive,False
 field_sensitivity_2_actual,False
-exceptions_3_false_positive,False
 lambda_functions_1_actual,False
 while_statement_1_false_positive,False
 while_statement_1_actual,True
@@ -72,3 +69,6 @@ if_statement_1_sanitized,False
 multi_dementional_array_1_false_positive,True
 multi_dementional_array_1_actual,True
 exec_1_actual,False
+decorator_1_actual,False
+exceptions_4_actual,False
+exceptions_3_false_positive,False
