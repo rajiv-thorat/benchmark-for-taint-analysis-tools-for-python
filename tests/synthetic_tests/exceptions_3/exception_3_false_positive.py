@@ -10,7 +10,7 @@ def exception_route() -> None:
     command = ''
     try:
         command = request.view_args.get('command') #source
-        empty_list[2] == ''
+        empty_list[2] = ''
         if empty_list[2] == 'test value':
             source = 'problem'
     except:
