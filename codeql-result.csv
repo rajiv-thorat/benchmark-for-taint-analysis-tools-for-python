@@ -1,6 +1,6 @@
 with_statement_2_sanitized,False
 with_statement_2_actual,False
-object_sensitivity_2_actual,False
+object_sensitivity_2_sanitized,False
 for_statement_1_false_positive,True
 for_statement_1_actual,True
 for_statement_1_sanitized,False
