@@ -1,6 +1,11 @@
 import utils
 from pathlib import Path
 from csv import writer
+from harness import Harness
+from snyk_harness import SnykHarness
+from pysa_harness import PysaHarness
+from codeql_harnesss import CodeQLHarness
+from pyt_harness import PytHarness
 
 class GenerateMetrics:
     @staticmethod
@@ -46,4 +51,8 @@ class GenerateMetrics:
 
 
 if __name__ == '__main__':
-    GenerateMetrics.generate('snyk')
+    metrics_summary = {}
+    for tool in Harness.__subclasses__():
+        tool_harness_instance = tool()
+        metrics_summary[tool_harness_instance.get_harness_type()] = GenerateMetrics.generate(tool_harness_instance.get_harness_type())
+    GenerateMetrics.write_metrics_summary(metrics_summary)
