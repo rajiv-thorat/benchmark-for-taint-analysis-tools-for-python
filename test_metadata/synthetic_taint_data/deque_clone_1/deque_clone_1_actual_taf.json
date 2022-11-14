@@ -1,19 +1,19 @@
 {
-    "fileName": "list_clone_1_actual.py",
+    "fileName": "deque_clone_1_actual.py",
     "day": "2022-10-09",
     "findings": [
         {
             "source": {
-                "statement": "command = request.view_args.get('operator')",
-                "methodName": "list_copy_route",
+                "statement": "command = request.view_args.get('command')",
+                "methodName": "deque_copy_route",
                 "className": "",
                 "lineNo": 8,
                 "targetName": "get",
                 "targetNo": 1
             },
             "sink": {
-                "statement": "eval(linked_list_copy.popleft())",
-                "methodName": "list_copy_route",
+                "statement": "eval(deque_copy.popleft())",
+                "methodName": "deque_copy_route",
                 "className": "",
                 "lineNo": 14,
                 "targetName": "eval",

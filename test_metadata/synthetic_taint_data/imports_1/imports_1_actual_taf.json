@@ -1,0 +1,29 @@
+{
+    "fileName": "imports_1_actual.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('command)",
+                "methodName": "import_route()",
+                "className": "",
+                "lineNo": 8,
+                "targetName": "get",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(command)",
+                "methodName": "evaluate()",
+                "className": "ClassA",
+                "lineNo": 3,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 4996377545,
+            "description": "This is an example of dynamic imports. Code injection.",
+            "isNegative": false,
+            "intermediateFlows": [],
+            "attributes": {}
+        }
+    ]
+}

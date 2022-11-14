@@ -1,0 +1,29 @@
+{
+    "fileName": "serialization_1_actual.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('command')",
+                "methodName": "serialization_route",
+                "className": "",
+                "lineNo": 9,
+                "targetName": "get",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(unpickled_command) ",
+                "methodName": "serialization_route",
+                "className": "",
+                "lineNo": 12,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 3052921920,
+            "description": "Taint flow for the serialization benchmark test. Command injection vulnerability.",
+            "isNegative": false,
+            "intermediateFlows": [],
+            "attributes": {}
+        }
+    ]
+}

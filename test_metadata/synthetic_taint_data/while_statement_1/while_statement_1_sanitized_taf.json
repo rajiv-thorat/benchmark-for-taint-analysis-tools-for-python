@@ -4,10 +4,10 @@
     "findings": [
         {
             "source": {
-                "statement": "command = request.view_args.get('operator')",
+                "statement": "command = request.view_args.get('command')",
                 "methodName": "while_route",
                 "className": "",
-                "lineNo": 8,
+                "lineNo": 9,
                 "targetName": "get",
                 "targetNo": 1
             },
@@ -15,7 +15,7 @@
                 "statement": "eval(sanitize(command))",
                 "methodName": "while_route",
                 "className": "",
-                "lineNo": 11,
+                "lineNo": 14,
                 "targetName": "eval",
                 "targetNo": 1
             },

@@ -1,0 +1,29 @@
+{
+    "fileName": "recursion_1_actual.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "args = request.view_args",
+                "methodName": "recursion_route",
+                "className": "",
+                "lineNo": 8,
+                "targetName": "",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(args.pop())",
+                "methodName": "recursion",
+                "className": "",
+                "lineNo": 13,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 4799586589,
+            "description": "Taint flow for the recursion benchmark test. Command injection vulnerability.",
+            "isNegative": false,
+            "intermediateFlows": [],
+            "attributes": {}
+        }
+    ]
+}

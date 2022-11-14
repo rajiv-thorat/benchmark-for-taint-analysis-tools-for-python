@@ -4,7 +4,7 @@
     "findings": [
         {
             "source": {
-                "statement": "command = request.view_args.get('operator')",
+                "statement": "command = request.view_args.get('command')",
                 "methodName": "dictionary_route",
                 "className": "",
                 "lineNo": 8,
@@ -20,14 +20,14 @@
                 "targetNo": 1
             },
             "ID": 8503917868,
-            "description": "Taint flow for the 'if' statment sanitized benchmark test. Command injection vulnerability.",
+            "description": "Taint flow for dictionary sanitized benchmark test. Command injection vulnerability.",
             "isNegative": true,
             "intermediateFlows": [
                 {
                     "statement": "eval(sanitized_dict.get('tainted'))",
                     "methodName": "dictionary_route",
                     "className": "",
-                    "lineNo": 14,
+                    "lineNo": 13,
                     "ID": 1
                 }
             ],

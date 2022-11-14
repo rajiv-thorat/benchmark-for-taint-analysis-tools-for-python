@@ -1,0 +1,29 @@
+{
+    "fileName": "setattr_1_actual.py",
+    "day": "2022-10-09",
+    "findings": [
+        {
+            "source": {
+                "statement": "command = request.view_args.get('command')",
+                "methodName": "reflection_route",
+                "className": "",
+                "lineNo": 12,
+                "targetName": "get",
+                "targetNo": 1
+            },
+            "sink": {
+                "statement": "eval(instance_a.command)",
+                "methodName": "reflection_route",
+                "className": "",
+                "lineNo": 15,
+                "targetName": "eval",
+                "targetNo": 1
+            },
+            "ID": 4612893838,
+            "description": "Taint flow for the setattr benchmark test. Command injection vulnerability.",
+            "isNegative": false,
+            "intermediateFlows": [],
+            "attributes": {}
+        }
+    ]
+}
